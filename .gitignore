@@ -7,10 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-*
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -33,3 +29,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Vite Ruby
+/public/vite*
+node_modules
+# Vite uses dotenv and suggests to ignore local-only env files. See
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+*.local
+
