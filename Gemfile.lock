@@ -374,8 +374,7 @@ DEPENDENCIES
   devise_masquerade (~> 1.2)
   friendly_id (~> 5.3)
   hotwire-rails
-  image_processing
-  importmap-rails
+  image_processing (~> 1.2)
   jbuilder
   js_from_routes
   madmin!

@@ -1,5 +1,9 @@
 <%= form_with model: [ @post, @post.activities.build ] do |form| %>
     <p>
+        <%= form.label :image %><br>
+        <%= form.file_field :image %>
+    </p>
+    <p>
         <%= form.label :title %><br>
         <%= form.text_field :title %>
     </p>

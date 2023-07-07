@@ -4,4 +4,5 @@ class Activity < ApplicationRecord
     validates :minutes_to_complete, numericality: { greater_than: 0 }, presence: true
 
     belongs_to :post
+    has_one_attached :image
 end

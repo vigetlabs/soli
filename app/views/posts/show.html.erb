@@ -3,6 +3,7 @@
     <ul>
         <% @post.activities.each do |activity| %>
             <li>
+                <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %><br/>
                 <%= activity.title %><br/>
                 <%= activity.description %><br/>
                 <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.<br/>
