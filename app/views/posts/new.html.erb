@@ -2,6 +2,10 @@
 
 <%= form_with(model: @post) do |form| %>
     <p>
+        <%= form.label :tags %><br/>
+        <%= form.collection_check_boxes(:tags, @tag_options, :last, :first) %>
+    </p>
+    <p>
         <%= form.label :image %><br>
         <%= form.file_field :image %>
     </p>
