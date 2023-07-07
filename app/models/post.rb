@@ -3,4 +3,5 @@ class Post < ApplicationRecord
     validates :description, length: { maximum: 1000 }, presence: true # ~200 words
 
     has_many :activities
+    has_one_attached :image
 end
