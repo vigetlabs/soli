@@ -1,0 +1,16 @@
+<h3>Activities</h3>
+<% if @post.activities.length > 0 %>
+    <ul>
+        <% @post.activities.each do |activity| %>
+            <li>
+                <%= activity.title %><br/>
+                <%= activity.description %><br/>
+                <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.<br/>
+            </li>
+            <br/>
+        <% end %>
+    </ul>
+<% end %>
+
+<h4>Add an Activity</h4>
+<%= render 'activities/form' %>

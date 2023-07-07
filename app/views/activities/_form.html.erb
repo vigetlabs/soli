@@ -1,0 +1,17 @@
+<%= form_with model: [ @post, @post.activities.build ] do |form| %>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :description %><br>
+        <%= form.text_area :description %>
+    </p>
+    <p>
+        <%= form.label :minutes_to_complete %>
+        <%= form.number_field :minutes_to_complete %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
