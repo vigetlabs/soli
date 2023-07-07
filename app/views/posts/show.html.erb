@@ -2,12 +2,10 @@
 <% if @post.activities.length > 0 %>
     <ul>
         <% @post.activities.each do |activity| %>
-            <li>
                 <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %><br/>
                 <%= activity.title %><br/>
                 <%= activity.prompt %>: <%= activity.prompt_answer %><br/>
                 <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.<br/>
-            </li>
             <br/>
         <% end %>
     </ul>

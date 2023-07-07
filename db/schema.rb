@@ -48,8 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_07_194030) do
     t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "prompt"
-    t.text "prompt_answer"
+    t.string "prompt", null: false
+    t.text "prompt_answer", null: false
     t.index ["post_id"], name: "index_activities_on_post_id"
   end
 
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_07_194030) do
     t.string "tags", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
+    t.string "city", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
