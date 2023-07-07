@@ -8,8 +8,12 @@
         <%= form.text_field :title %>
     </p>
     <p>
-        <%= form.label :description %><br>
-        <%= form.text_area :description %>
+        <%= form.label :prompt %><br>
+        <%= form.select :prompt, options_for_select(Activity::PROMPTS) %>
+    </p>
+    <p>
+        <%= form.label :prompt_answer %><br>
+        <%= form.text_field :prompt_answer %>
     </p>
     <p>
         <%= form.label :minutes_to_complete %>
