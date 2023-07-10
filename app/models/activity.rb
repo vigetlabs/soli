@@ -5,6 +5,8 @@ class Activity < ApplicationRecord
     validates :title, length: { maximum: 50 }, presence: true
     validates :prompt_answer, length: { maximum: 1000 }, presence: true # ~200 words
     validates :minutes_to_complete, numericality: { greater_than: 0 }, presence: true
+    validates :minutes_to_complete, numericality: { greater_than: 0 }, presence: true
+    validates :hours_to_complete, numericality: { greater_than: 0, less_than_or_equal_to: 45}, presence: true
 
     belongs_to :post
     has_one_attached :image
