@@ -19,5 +19,6 @@ module Soli
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.tag_options = { 'Eat': 1, 'Entertain': 2, 'Relax': 3, 'Shop': 4, 'Learn': 5, 'Create': 6, 'Exercise': 7, 'Outdoors/Nature': 8, 'Free': 9 }
   end
 end

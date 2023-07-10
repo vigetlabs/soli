@@ -1,22 +1,22 @@
 <%= form_with model: [ @post, @post.activities.build ] do |form| %>
     <p>
-        <%= form.label :image %><br>
+        <%= form.label :image %>
         <%= form.file_field :image %>
     </p>
     <p>
-        <%= form.label :location %><br>
+        <%= form.label :location %>
         <%= form.text_field :location %>
     </p>
     <p>
-        <%= form.label :title %><br>
+        <%= form.label :title %>
         <%= form.text_field :title %>
     </p>
     <p>
-        <%= form.label :prompt %><br>
+        <%= form.label :prompt %>
         <%= form.select :prompt, options_for_select(Activity::PROMPTS) %>
     </p>
     <p>
-        <%= form.label :prompt_answer %><br>
+        <%= form.label :prompt_answer %>
         <%= form.text_field :prompt_answer %>
     </p>
     <p>
@@ -28,8 +28,8 @@
         <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0 %>
     </p>
     <p>
-        <%= form.label :tags %><br/>
-        <%= form.collection_check_boxes(:tags, Activity::TAG_OPTIONS, :last, :first) %>
+        <%= form.label :tags %>
+        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
     </p>
     <p>
         <%= form.submit %>
