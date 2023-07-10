@@ -7,6 +7,6 @@ class Activity < ApplicationRecord
     validates :hours_to_complete, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 45}, presence: true
     validates :location, presence: true
 
-    belongs_to :post
+    belongs_to :guide
     has_one_attached :image
 end

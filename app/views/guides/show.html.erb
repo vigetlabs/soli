@@ -1,7 +1,7 @@
 <h3>Activities</h3>
-<% if @post.activities.length > 0 %>
+<% if @guide.activities.length > 0 %>
     <ul>
-        <% @post.activities.each do |activity| %>
+        <% @guide.activities.each do |activity| %>
             <li>
                 <% if activity.image.attached? %>
                     <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %>

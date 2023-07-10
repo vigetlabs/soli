@@ -1,6 +1,6 @@
 <h3>Add a Guide</h3>
 
-<%= form_with(model: @post) do |form| %>
+<%= form_with(model: @guide) do |form| %>
     <p>
         <%= form.label :tags %>
         <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
