@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_151429) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_10_193121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_151429) do
   create_table "activities", force: :cascade do |t|
     t.string "title", null: false
     t.integer "minutes_to_complete", null: false
-    t.bigint "post_id", null: false
+    t.bigint "guide_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "prompt", null: false
@@ -53,10 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_151429) do
     t.string "tags", default: [], array: true
     t.integer "hours_to_complete", null: false
     t.text "location", null: false
-    t.index ["post_id"], name: "index_activities_on_post_id"
+    t.index ["guide_id"], name: "index_activities_on_guide_id"
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "guides", force: :cascade do |t|
     t.string "title", null: false
     t.string "tags", default: [], array: true
     t.datetime "created_at", null: false
@@ -66,5 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_151429) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "activities", "posts"
+  add_foreign_key "activities", "guides"
 end

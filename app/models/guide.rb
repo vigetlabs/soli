@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Guide < ApplicationRecord
     validates :title, length: { maximum: 50 }, presence: true
     validates :city, length: { maximum: 50 }, presence: true
 
