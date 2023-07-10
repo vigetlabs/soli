@@ -21,11 +21,11 @@
     </p>
     <p>
         <%= form.label :hours_to_complete %>
-        <%= form.number_field :hours_to_complete, min: 0 %>
+        <%= form.number_field :hours_to_complete, min: 0, value: 0 %>
     </p>
     <p>
         <%= form.label :minutes_to_complete %>
-        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0 %>
+        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0 %>
     </p>
     <p>
         <%= form.label :tags %><br/>
