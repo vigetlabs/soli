@@ -7,6 +7,6 @@ class ActivitiesController < ApplicationController
 
     private
         def activity_params
-            params.require(:activity).permit(:title, :prompt, :prompt_answer, :minutes_to_complete, :post_id, :image)
+            params.require(:activity).permit(:title, :prompt, :prompt_answer, :minutes_to_complete, :post_id, :image, :tags)
         end
 end
