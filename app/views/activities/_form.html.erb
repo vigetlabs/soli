@@ -20,6 +20,10 @@
         <%= form.number_field :minutes_to_complete %>
     </p>
     <p>
+        <%= form.label :tags %><br/>
+        <%= form.collection_check_boxes(:tags, Activity::TAG_OPTIONS, :last, :first) %>
+    </p>
+    <p>
         <%= form.submit %>
     </p>
 <% end %>
