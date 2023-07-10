@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :parts_kit, only: [:index]
+  resources :guides, only: [:new, :create, :show] do
+    resources :activities
+  end
+  root "guides#new"
 end

@@ -1,0 +1,37 @@
+<%= form_with model: [ @guide, @guide.activities.build ] do |form| %>
+    <p>
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+    </p>
+    <p>
+        <%= form.label :location %>
+        <%= form.text_field :location %>
+    </p>
+    <p>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :prompt %>
+        <%= form.select :prompt, options_for_select(Activity::PROMPTS) %>
+    </p>
+    <p>
+        <%= form.label :prompt_answer %>
+        <%= form.text_field :prompt_answer %>
+    </p>
+    <p>
+        <%= form.label :hours_to_complete %>
+        <%= form.number_field :hours_to_complete, min: 0, value: 0 %>
+    </p>
+    <p>
+        <%= form.label :minutes_to_complete %>
+        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0 %>
+    </p>
+    <p>
+        <%= form.label :tags %>
+        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

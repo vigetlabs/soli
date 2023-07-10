@@ -1,7 +1,12 @@
 class Activity < ApplicationRecord
-    validates :title, length: { maximum: 50 }, presence: true
-    validates :description, length: { maximum: 800 }, presence: true # ~150 words
-    validates :time, numericality: { greater_than: 0 }, presence: true
+    PROMPTS = ["Write anything!", "At first I felt..., but then I felt...", "When I was here, I felt...", "I realized/learned...", "Before coming, I wish I knew...", "You have to try...", "My favorite moment was...", "Funny story..."]
 
-    belongs_to :post
+    validates :title, length: { maximum: 50 }, presence: true
+    validates :prompt_answer, length: { maximum: 1000 }, presence: true # ~200 words
+    validates :minutes_to_complete, numericality: { greater_than_or_equal_to: 0 }, presence: true
+    validates :hours_to_complete, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 45}, presence: true
+    validates :location, presence: true
+
+    belongs_to :guide
+    has_one_attached :image
 end
