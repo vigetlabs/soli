@@ -2,19 +2,19 @@
 
 <%= form_with(model: @post) do |form| %>
     <p>
-        <%= form.label :tags %><br/>
-        <%= form.collection_check_boxes(:tags, Post::TAG_OPTIONS, :last, :first) %>
+        <%= form.label :tags %>
+        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
     </p>
     <p>
-        <%= form.label :image %><br>
+        <%= form.label :image %>
         <%= form.file_field :image %>
     </p>
     <p>
-        <%= form.label :title %><br>
+        <%= form.label :title %>
         <%= form.text_field :title %>
     </p>
     <p>
-        <%= form.label :city %><br>
+        <%= form.label :city %>
         <%= form.text_field :city %>
     </p>
     <%= form.submit "Create Guide", class: "" %>

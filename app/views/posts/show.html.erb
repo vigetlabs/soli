@@ -2,13 +2,14 @@
 <% if @post.activities.length > 0 %>
     <ul>
         <% @post.activities.each do |activity| %>
+            <li>
                 <% if activity.image.attached? %>
-                    <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %><br/>
+                    <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %>
                 <% end %>
-                <%= activity.title %><br/>
-                <%= activity.prompt %>: <%= activity.prompt_answer %><br/>
-                <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.<br/>
-            <br/>
+                <%= activity.title %>
+                <%= activity.prompt %>: <%= activity.prompt_answer %>
+                <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.
+            </li>
         <% end %>
     </ul>
 <% end %>
