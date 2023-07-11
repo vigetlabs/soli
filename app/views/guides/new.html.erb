@@ -2,10 +2,6 @@
 
 <%= form_with(model: @guide) do |form| %>
     <p>
-        <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
-    </p>
-    <p>
         <%= form.label :image %>
         <%= form.file_field :image %>
     </p>

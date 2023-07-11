@@ -21,7 +21,7 @@
     </p>
     <p>
         <%= form.label :hours_to_complete %>
-        <%= form.number_field :hours_to_complete, min: 0, value: 0 %>
+        <%= form.number_field :hours_to_complete, max: 23, min: 0, value: 0 %>
     </p>
     <p>
         <%= form.label :minutes_to_complete %>
@@ -35,3 +35,5 @@
         <%= form.submit %>
     </p>
 <% end %>
+
+<%= link_to "Post Guide", edit_guide_path(@guide) %>
