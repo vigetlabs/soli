@@ -1,8 +1,0 @@
-current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/llhttp-ffi-0.4.0/ext
-/Users/viget/.rvm/rubies/ruby-3.2.2/bin/ruby -rrubygems /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/rake-13.0.6/exe/rake RUBYARCHDIR\=/Users/viget/soli/vendor/bundle/ruby/3.2.0/extensions/x86_64-darwin-22/3.2.0/llhttp-ffi-0.4.0 RUBYLIBDIR\=/Users/viget/soli/vendor/bundle/ruby/3.2.0/extensions/x86_64-darwin-22/3.2.0/llhttp-ffi-0.4.0
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing   -o x86_64-darwin/llhttp/api.o -c ./llhttp/api.c
-mkdir -p x86_64-darwin/llhttp
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing   -o x86_64-darwin/llhttp/http.o -c ./llhttp/http.c
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing   -o x86_64-darwin/llhttp/llhttp.o -c ./llhttp/llhttp.c
-gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing   -o x86_64-darwin/llhttp/llhttp_ext.o -c ./llhttp/llhttp_ext.c
-gcc -bundle -o x86_64-darwin/libllhttp-ext.bundle x86_64-darwin/llhttp/api.o x86_64-darwin/llhttp/http.o x86_64-darwin/llhttp/llhttp.o x86_64-darwin/llhttp/llhttp_ext.o -fexceptions 
