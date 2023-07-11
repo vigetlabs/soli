@@ -1,9 +1,0 @@
-language: ruby
-rvm:
-  - 2.6.0
-  - 2.7.3
-script: time ./script/travis.sh
-addons:
-  apt:
-    packages:
-    - time
