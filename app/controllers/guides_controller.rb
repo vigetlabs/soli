@@ -16,6 +16,16 @@ class GuidesController < ApplicationController
         @guide = Guide.find(params[:id])
     end
 
+    def edit
+        @guide = Guide.find(params[:id])
+    end
+
+    def update
+        @guide = Guide.find(params[:id])
+        @guide.tags = guide_params[:tags]
+        @guide.save
+    end
+
     private
         def guide_params
             params.require(:guide).permit(:id, :title, :city, :image, tags: [])
