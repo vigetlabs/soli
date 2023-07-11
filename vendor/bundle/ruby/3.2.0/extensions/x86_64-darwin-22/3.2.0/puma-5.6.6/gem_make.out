@@ -1,0 +1,30 @@
+current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/puma-5.6.6/ext/puma_http11
+/Users/viget/.rvm/rubies/ruby-3.2.2/bin/ruby extconf.rb
+using OpenSSL pkgconfig (openssl.pc)
+checking for openssl/bio.h... yes
+checking for DTLS_method() in openssl/ssl.h... yes
+checking for TLS_server_method() in openssl/ssl.h... yes
+checking for SSL_CTX_set_min_proto_version(NULL, 0) in openssl/ssl.h... yes
+checking for X509_STORE_up_ref()... yes
+checking for SSL_CTX_set_ecdh_auto(NULL, 0) in openssl/ssl.h... yes
+checking for SSL_CTX_set_dh_auto(NULL, 0) in openssl/ssl.h... yes
+checking for SSL_get1_peer_certificate() in openssl/ssl.h... no
+checking for Random.bytes... yes
+creating Makefile
+
+current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/puma-5.6.6/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20230711-21291-tlz6q sitelibdir\=./.gem.20230711-21291-tlz6q clean
+
+current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/puma-5.6.6/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20230711-21291-tlz6q sitelibdir\=./.gem.20230711-21291-tlz6q
+compiling http11_parser.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.bundle
+
+current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/puma-5.6.6/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20230711-21291-tlz6q sitelibdir\=./.gem.20230711-21291-tlz6q install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 puma_http11.bundle ./.gem.20230711-21291-tlz6q/puma
+
+current directory: /Users/viget/soli/vendor/bundle/ruby/3.2.0/gems/puma-5.6.6/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20230711-21291-tlz6q sitelibdir\=./.gem.20230711-21291-tlz6q clean

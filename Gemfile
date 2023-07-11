@@ -70,6 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'shoulda-matchers'
 end
 gem "madmin", github: "excid3/madmin"
 gem "bootstrap", "~> 4.5"
