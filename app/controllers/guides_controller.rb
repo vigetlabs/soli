@@ -1,4 +1,8 @@
 class GuidesController < ApplicationController
+    def index
+        @guides = Guide.search_by_city(params[:query]).length > 0 ? Guide.search_by_city(params[:query]) : Guide.all
+    end
+
     def new 
         @guide = Guide.new
     end
