@@ -1,4 +1,4 @@
-<%= form_with model: [ @guide, @guide.activities.build ] do |form| %>
+<%= form_with model: [ guide, guide.activities.build ] do |form| %>
     <p>
         <%= form.label :image %>
         <%= form.file_field :image %>
@@ -36,4 +36,4 @@
     </p>
 <% end %>
 
-<%= link_to "I'm Done!", add_tags_guide_path(@guide) %>
+<%= link_to "I'm Done!", add_tags_guide_path(guide) %>

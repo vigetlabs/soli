@@ -13,17 +13,13 @@ class GuidesController < ApplicationController
     end
 
     def show
-        @guide = Guide.find(params[:id])
     end
 
     def add_tags
-        @guide = Guide.find(params[:id])
     end
 
-    def update_tags
-        @guide = Guide.find(params[:id])
-        @guide.tags = guide_params[:tags]
-        if @guide.save
+    def update
+        if guide.update(guide_params)
             redirect_to root_path
         else
             render 'add_tags', status: :unprocessable_entity
@@ -31,6 +27,11 @@ class GuidesController < ApplicationController
     end
 
     private
+        def guide
+            @guide ||= Guide.find(params[:id])
+        end
+        helper_method :guide
+
         def guide_params
             params.require(:guide).permit(:id, :title, :city, :image, tags: [])
         end
