@@ -1,0 +1,20 @@
+<%= form_tag(guides_path, method: "get") do %>
+    <%= text_field_tag :query, nil, placeholder: "Search by city...", class: "form-control" %>
+    <%= submit_tag "", style: "display: none;" %>
+<% end %>
+
+<ul>
+    <% @guides.each do |guide| %>
+        <li>
+            <% if guide.image.attached? %>
+                <%= image_tag guide.image.variant(resize_to_fit: [100,100]) %>
+            <% end %>
+            <%= guide.created_at.to_date %>
+            <%= guide.title %>
+            <%= guide.city %>
+            <% guide.tags && guide.tags.each do |tag| %> <!-- n+1 queries? -->
+                <%= Rails.configuration.tag_options.key(tag.to_i) %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
