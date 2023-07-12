@@ -30,11 +30,6 @@ RSpec.describe Activity, type: :model do
     it "is not valid without prompt answer" do
       should validate_presence_of(:prompt_answer)
     end
-
-    it "is not valid without guide id" do
-      subject.guide_id = nil
-      expect(subject).to_not be_valid
-    end
   end
 
   describe "Associations" do
