@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
     def index
-        @guides = Guide.search_by_city(params[:city_query]).length > 0 ? Guide.search_by_city(params[:city_query]) : Guide.all
+        @guides = Guide.search_by_city(params[:city_query]).length > 0 ? Guide.search_by_city(params[:city_query]) : Guide.order('created_at DESC')
         @guides = params[:tag_queries] ? @guides.tagged_one_of(params[:tag_queries]) : @guides
     end
 

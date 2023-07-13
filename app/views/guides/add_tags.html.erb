@@ -1,7 +1,7 @@
 <%= form_for guide do |form| %>
     <p>
         <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
+        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) %>
     </p>
     <%= form.submit "Add Tags", class: "" %>
 <% end %>
