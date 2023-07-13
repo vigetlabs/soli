@@ -1,4 +1,6 @@
 class Guide < ApplicationRecord
+    TAG_OPTIONS = Rails.configuration.tag_options
+
     include PgSearch::Model
     pg_search_scope :search_by_city, against: :city
     scope :tagged_one_of, -> (tags) { tags ? where("tags && ARRAY[?]::varchar[]", tags) : all }

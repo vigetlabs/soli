@@ -2,9 +2,9 @@
     <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control" %>
     <%= submit_tag "", style: "display: none;" %>
 
-    <% Rails.configuration.tag_options.each do |first, last| %>
-        <%= check_box_tag "tag_queries[]", last %>
-        <%= h first.to_s %>
+    <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
+        <%= check_box_tag "tag_queries[]", tag_id %>
+        <%= h tag_name.to_s %>
     <% end %>
     <%= submit_tag "", style: "display: none;" %>
 <% end %>
@@ -15,12 +15,13 @@
             <% if guide.image.attached? %>
                 <%= image_tag guide.image.variant(resize_to_fit: [100,100]) %>
             <% end %>
-            <%= guide.created_at.to_date %> <!-- n+1 queries? -->
+            <%= guide.created_at.to_date %>
             <%= guide.title %>
             <%= guide.city %>
-            <% guide.tags && guide.tags.each do |tag| %>
-                <%= Rails.configuration.tag_options.key(tag.to_i) %>
+            <% guide&.tags.each do |tag| %>
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
+            <%= guide.activities.length %> Activities
         </li>
     <% end %>
 </ul>
