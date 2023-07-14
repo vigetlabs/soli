@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+    before_action :authenticate_user!
+
     def create 
         @guide = Guide.find(params[:guide_id])
         @activity = @guide.activities.create(activity_params)
