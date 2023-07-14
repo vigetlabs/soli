@@ -4,7 +4,7 @@
 
     <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
         <%= check_box_tag "tag_queries[]", tag_id %>
-        <%= h tag_name.to_s %>
+        <%= label_tag tag_name %>
     <% end %>
     <%= submit_tag "", style: "display: none;" %>
 <% end %>
@@ -13,7 +13,7 @@
     <% @guides.each do |guide| %>
         <li>
             <% if guide.image.attached? %>
-                <%= image_tag guide.image.variant(resize_to_fit: [100,100]) %>
+                <%= image_tag guide.resize_attached_image %>
             <% end %>
             <%= guide.created_at.to_date %>
             <%= guide.title %>
