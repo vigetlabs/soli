@@ -1,11 +1,11 @@
 <div class="container flex flex-col items-center">
 <h1 class="py-2 text-3xl font-headline">Add Activities</h1>
-<% if @guide.activities.length > 0 %>
+<% if guide.activities.length > 0 %>
     <ul>
-        <% @guide.activities.each do |activity| %>
+        <% guide.activities.each do |activity| %>
             <li>
                 <% if activity.image.attached? %>
-                    <%= image_tag activity.image.variant(resize_to_fit: [100,100]) %>
+                    <%= image_tag activity.resize_attached_image %>
                 <% end %>
                 <%= activity.title %>
                 <%= activity.prompt %>: <%= activity.prompt_answer %>

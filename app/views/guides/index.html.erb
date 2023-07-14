@@ -1,0 +1,27 @@
+<%= form_tag(guides_path, method: "get") do %>
+    <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control" %>
+    <%= submit_tag "", style: "display: none;" %>
+
+    <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
+        <%= check_box_tag "tag_queries[]", tag_id %>
+        <%= label_tag tag_name %>
+    <% end %>
+    <%= submit_tag "", style: "display: none;" %>
+<% end %>
+
+<ul>
+    <% @guides.each do |guide| %>
+        <li>
+            <% if guide.image.attached? %>
+                <%= image_tag guide.resize_attached_image %>
+            <% end %>
+            <%= guide.created_at.to_date %>
+            <%= guide.title %>
+            <%= guide.city %>
+            <% guide&.tags.each do |tag| %>
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
+            <% end %>
+            <%= guide.activities.length %> Activities
+        </li>
+    <% end %>
+</ul>

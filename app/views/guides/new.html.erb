@@ -4,10 +4,6 @@
         <p class="py-1 mb-5 text-lg italic font-headline">Save memories, inspire others</p>
     </div>
     <%= form_with(model: @guide) do |form| %>
-        <p class="hidden">
-            <%= form.label :tags %>
-            <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
-        </p>
         <p class="flex flex-col">
             <%= form.label "Title your Guide", class: "font-bold" %>
             <%= form.text_field :title, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active", placeholder: "e.g. My Day in Boston" %>

@@ -69,6 +69,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'shoulda-matchers'
+  gem "factory_bot_rails"
 end
 gem "madmin", github: "excid3/madmin"
 gem "bootstrap", "~> 4.5"
@@ -91,3 +94,4 @@ gem "vite_rails"
 gem "js_from_routes", group: :development
 
 gem "tailwindcss-rails", "~> 2.0"
+gem 'pg_search'

@@ -1,0 +1,7 @@
+<%= form_for guide do |form| %>
+    <p>
+        <%= form.label :tags %>
+        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) %>
+    </p>
+    <%= form.submit "Add Tags", class: "" %>
+<% end %>
