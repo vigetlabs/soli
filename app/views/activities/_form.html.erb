@@ -1,37 +1,53 @@
 <%= form_with model: [ @guide, @guide.activities.build ] do |form| %>
-    <p>
-        <%= form.label :image %>
-        <%= form.file_field :image %>
+    <div data-controller="image-preview">
+        <p>
+            <%= form.label :image %>
+            <%= form.file_field :image, class: "block text-sm border border-lavender-primary rounded-smd", "data-action":"image-preview#setImgSrcValue" %>
+            <img id="preview" data-image-preview-target="preview" class="hidden object-cover w-72 h-72 rounded-smd" alt="image upload preview"/>
+        </p>
+    </div>
+    <p class="flex flex-col">
+        <%= form.label :location, class: "font-bold" %>
+        <%= form.text_field :location, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
     </p>
-    <p>
-        <%= form.label :location %>
-        <%= form.text_field :location %>
+    <p class="flex flex-col">
+        <%= form.label :title, class: "font-bold" %>
+        <%= form.text_field :title, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
     </p>
-    <p>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
+    <p class="flex flex-col">
+        <%= form.label :prompt, class: "font-bold" %>
+        <%= form.select :prompt, options_for_select(Activity::PROMPTS), class: "border-lavender-primary" %>
     </p>
-    <p>
-        <%= form.label :prompt %>
-        <%= form.select :prompt, options_for_select(Activity::PROMPTS) %>
+    <p class="flex flex-col">
+        <%= form.label :prompt_answer, class: "hidden" %>
+        <%= form.text_field :prompt_answer, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
     </p>
-    <p>
-        <%= form.label :prompt_answer %>
-        <%= form.text_field :prompt_answer %>
-    </p>
-    <p>
+    <div class="flex flex-row justify-evenly">
+    <p class="flex flex-col">
         <%= form.label :hours_to_complete %>
-        <%= form.number_field :hours_to_complete, min: 0, value: 0 %>
+        <%= form.number_field :hours_to_complete, min: 0, max: 23, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
     </p>
-    <p>
+    <p class="flex flex-col">
         <%= form.label :minutes_to_complete %>
-        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0 %>
+        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
     </p>
-    <p>
-        <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
+    </div> 
+    <%# --- Tags are a work in progress; please ignore for now --- %>
+    <p class="flex hidden w-10">
+        <%= form.label :tags, class: "font-bold" %>
+        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) do |b| %>
+            <% id_field = "peer/#{b.__id__}" %>
+            <% id_field_2 = "items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/#{b.__id__}:bg-lavender-active"%>
+            <%= b.check_box id:"#{b.__id__}", class: id_field %>
+            <%= b.label for:"#{b.__id__}", class: id_field_2 %>
+        <% end %>
+    <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
+    <label for="tagA" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/a:bg-gray-400">tag</label>
+    <input type="checkbox" name="tag" id="tagB" class="hidden peer/b">
+    <label for="tagB" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/b:bg-gray-400">tag</label>
     </p>
+    <%# --- End of tags section --- %>
     <p>
-        <%= form.submit %>
+        <%= form.submit "Add Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded-smd bg-lavender-primary hover:bg-lavender-hover active:bg-lavender-active" %>
     </p>
 <% end %>

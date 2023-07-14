@@ -1,4 +1,5 @@
-<h3>Activities</h3>
+<div class="container flex flex-col items-center">
+<h1 class="py-2 text-3xl font-headline">Add Activities</h1>
 <% if @guide.activities.length > 0 %>
     <ul>
         <% @guide.activities.each do |activity| %>
@@ -14,5 +15,6 @@
     </ul>
 <% end %>
 
-<h4>Add an Activity</h4>
+<p class="py-1 mb-5 text-md font-headline">Complete at least one activity before posting!</p>
 <%= render 'activities/form' %>
+</div>

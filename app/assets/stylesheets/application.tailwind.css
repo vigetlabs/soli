@@ -3,12 +3,15 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Mulish&family=Niramit&display=swap');
 
-/*
+
 
 @layer components {
   .btn-primary {
     @apply px-4 py-2 bg-blue-200;
   }
-}
 
-*/
+  /* Missing: focus:border-lavender-active */
+  .text-input {
+    @apply max-w-sm px-4 py-3 my-1 placeholder-gray-300 border border-lavender-primary rounded-smd focus: ring-lavender-active;
+  }
+}

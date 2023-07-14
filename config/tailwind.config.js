@@ -12,30 +12,38 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        form: '#031830',
-        lavender: {
-          500: '#D195FE',
-          700: '#BC86E5',
-          900: '#A777CB',
-          100: '#7D5998'
+        form: {
+          primary: '#031830',
+          secondary: '#97A0AC'
         },
-        
+        lavender: {
+          primary: '#D195FE',
+          hover: '#BC86E5',
+          active: '#A777CB',
+          border: '#7D5998'
+        },
+        periwinkle: {
+          primary: '#6B8FFC',
+          hover: '#5274DD',
+          active: '#4461B9',
+          border: '#293A6F'
+        }
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        // sans: ['Inter var', ...defaultTheme.fontFamily.sans],
         headline: ['Niramit', 'sans-serif'],
         body: ['Mulish', 'sans-serif'],
-        sans: ['Mulish', 'sans-serif'],
+        sans: ['Mulish', 'sans-serif']
       },
       borderRadius: {
-        'smd': '0.25rem',
-      },
-    },
+        smd: '0.25rem'
+      }
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
+    require('@tailwindcss/container-queries')
   ]
 }

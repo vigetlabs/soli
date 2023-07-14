@@ -1,11 +1,11 @@
 <div id="parts" class="block">
-    <button class="px-4 py-2 text-white border rounded-smd bg-lavender-500 hover:bg-lavender-700 active:bg-lavender-900 border-lavender-900">Post</button>
+    <button class="px-4 py-2 my-2 text-white border rounded-smd bg-lavender-primary hover:bg-lavender-hover active:bg-lavender-active border-lavender-border">Post</button>
 
-    <h1 class="py-2 text-3xl font-headline">
+    <h1 data-controller="hello" class="py-2 text-3xl font-headline">
         Create a post
     </h1>
 
-    <h2 class="py-1 font-body">
+    <h2 class="py-1 font-headline">
         it's time to inspire
     </h2>
 
@@ -18,6 +18,12 @@
         <!-- Supporting text -->
         <p class="text-sm text-gray-300">What's your post about?</p>
     </div>
+
+    <!-- Selectable tag (checkbox) -->
+    <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
+    <label for="tagA" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/a:bg-gray-400">tag</label>
+    <input type="checkbox" name="tag" id="tagB" class="hidden peer/b">
+    <label for="tagB" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/b:bg-gray-400">tag</label>
     
     <form>
         <select id="duration" class="w-40 px-4 py-2 my-1 placeholder-gray-300 border border-gray-300 rounded-smd">

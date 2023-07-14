@@ -1,21 +1,25 @@
-<h3>Add a Guide</h3>
-
-<%= form_with(model: @guide) do |form| %>
-    <p>
-        <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
-    </p>
-    <p>
-        <%= form.label :image %>
-        <%= form.file_field :image %>
-    </p>
-    <p>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
-    </p>
-    <p>
-        <%= form.label :city %>
-        <%= form.text_field :city %>
-    </p>
-    <%= form.submit "Create Guide", class: "" %>
-<% end %>
+<div class="container flex flex-col items-center" data-controller="image-preview">
+    <div id="title" class="container flex flex-col items-center">
+        <h1 class="py-2 text-3xl font-headline">Create a Guide</h1>
+        <p class="py-1 mb-5 text-lg italic font-headline">Save memories, inspire others</p>
+    </div>
+    <%= form_with(model: @guide) do |form| %>
+        <p class="hidden">
+            <%= form.label :tags %>
+            <%= form.collection_check_boxes(:tags, Rails.configuration.tag_options, :last, :first) %>
+        </p>
+        <p class="flex flex-col">
+            <%= form.label "Title your Guide", class: "font-bold" %>
+            <%= form.text_field :title, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active", placeholder: "e.g. My Day in Boston" %>
+        </p>
+        <p class="flex flex-col">
+            <%= form.label "City Name", class: "font-bold" %>
+            <%= form.text_field :city, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active", placeholder: "Where were you?" %>
+        </p>
+        <p>
+            <%= form.label :image %>
+            <%= form.file_field :image, class: "block text-sm border border-lavender-primary rounded-smd", "data-action":"image-preview#setImgSrcValue" %>
+            <img id="preview" data-image-preview-target="preview" class="hidden object-cover w-72 h-72 rounded-smd" alt="image upload preview"/>
+        </p>
+        <%= form.submit "Continue", class: "my-2 mt-6 px-4 py-2 text-white rounded-smd bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold" %>
+    <% end %>
