@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_193121) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_134428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_193121) do
     t.datetime "updated_at", null: false
     t.string "prompt", null: false
     t.text "prompt_answer", null: false
-    t.string "tags", default: [], array: true
     t.integer "hours_to_complete", null: false
     t.text "location", null: false
     t.index ["guide_id"], name: "index_activities_on_guide_id"

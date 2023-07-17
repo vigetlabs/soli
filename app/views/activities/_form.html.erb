@@ -28,10 +28,6 @@
         <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0 %>
     </p>
     <p>
-        <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) %>
-    </p>
-    <p>
         <%= form.submit %>
     </p>
 <% end %>
