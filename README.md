@@ -7,8 +7,15 @@ From the root directory of the project, run the following commands:
 ```
 bundle install
 yarn
+rails db:setup
 ./bin/dev
 ```
+
+TODO: Add account creation instructions (localhost:3000/users/sign_up)
+
+## Pages
+
+New guide: localhost:3000/guides/new
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
