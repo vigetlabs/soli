@@ -1,55 +1,42 @@
 <%= form_with model: [ guide, guide.activities.build ] do |form| %>
-    <div data-controller="image-preview">
-        <p>
+    <div class="flex flex-col">
+        <%# Activity Title Field %>
+        <%= form.label "Activity Name", class: "font-bold" %>
+        <%= form.text_field :title, class: "text-input", placeholder: "Title this part of your day" %>
+        <%# Activity Image Upload %>
+        <div class="mb-4" data-controller="image-preview">
             <%= form.label :image %>
-            <%= form.file_field :image, class: "block text-sm border border-lavender-primary rounded-smd", "data-action":"image-preview#setImgSrcValue" %>
-            <img id="preview" data-image-preview-target="preview" class="hidden object-cover w-72 h-72 rounded-smd" alt="image upload preview"/>
-        </p>
-    </div>
-    <p class="flex flex-col">
+            <%= form.file_field :image, class: "block text-sm border border-lavender-primary rounded", "data-action":"image-preview#setImgSrcValue" %>
+            <%# Image preview element (hidden until image is uploaded) %>
+            <%# Uses object-cover to crop image to fit to square box %>
+            <img id="preview" data-image-preview-target="preview" class="hidden rounded w-72 h-72 aspect-square" alt="image upload preview"/>
+        </div>
+        <%# Location Field %>
         <%= form.label :location, class: "font-bold" %>
-        <%= form.text_field :location, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
-    </p>
-    <p class="flex flex-col">
-        <%= form.label :title, class: "font-bold" %>
-        <%= form.text_field :title, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
-    </p>
-    <p class="flex flex-col">
+        <%= form.text_field :location, class: "text-input" %>
+        <%# Activity Duration %>
+        <%= form.label "Duration", class: "font-bold" %>
+        <div class="flex flex-row items-center">
+            <div class="flex flex-col">
+                <%= form.label :hours_to_complete, class: "hidden" %>
+                <%= form.number_field :hours_to_complete, max: 23, min:0, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded focus:border-lavender-active focus:ring-lavender-active" %>
+            </div>
+            <p class="pl-2 pr-4"> hr </p>
+            <div class="flex flex-col">
+                <%= form.label :minutes_to_complete, class: "hidden" %>
+                <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded focus:border-lavender-active focus:ring-lavender-active" %>
+            </div>
+            <p class="pl-2"> min </p>
+        </div> 
+        <%# Activity Description Prompt dropdown %>
         <%= form.label :prompt, class: "font-bold" %>
-        <%= form.select :prompt, options_for_select(Activity::PROMPTS), class: "border-lavender-primary" %>
-    </p>
-    <p class="flex flex-col">
+        <%= form.select :prompt, options_for_select(Activity::PROMPTS), class: "border-lavender-primary text-periwinkle-primary" %>
+        <%# Activity Description %>
         <%= form.label :prompt_answer, class: "hidden" %>
-        <%= form.text_field :prompt_answer, class: "px-4 py-3 my-1 max-w-sm placeholder-gray-300 border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
-    </p>
-    <div class="flex flex-row justify-evenly">
-    <p class="flex flex-col">
-        <%= form.label :hours_to_complete %>
-        <%= form.number_field :hours_to_complete, max: 23, min:0, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
-    </p>
-    <p class="flex flex-col">
-        <%= form.label :minutes_to_complete %>
-        <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-lavender-primary rounded-smd focus:border-lavender-active focus:ring-lavender-active" %>
-    </p>
-    </div> 
-    <%# --- Tags are a work in progress; please ignore for now --- %>
-    <p class="flex hidden w-10">
-        <%= form.label :tags, class: "font-bold" %>
-        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) do |b| %>
-            <% id_field = "peer/#{b.__id__}" %>
-            <% id_field_2 = "items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/#{b.__id__}:bg-lavender-active"%>
-            <%= b.check_box id:"#{b.__id__}", class: id_field %>
-            <%= b.label for:"#{b.__id__}", class: id_field_2 %>
-        <% end %>
-    <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
-    <label for="tagA" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/a:bg-gray-400">tag</label>
-    <input type="checkbox" name="tag" id="tagB" class="hidden peer/b">
-    <label for="tagB" class="items-center px-2 py-1 border border-gray-500 rounded-lg select-none peer-checked/b:bg-gray-400">tag</label>
-    </p>
-    <%# --- End of tags section --- %>
-    <p>
-        <%= form.submit "Add Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded-smd bg-lavender-primary hover:bg-lavender-hover active:bg-lavender-active" %>
-    </p>
+        <%= form.text_field :prompt_answer, class: "text-input" %>
+    </div>
+    <div>
+        <%= form.submit "Add Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded bg-lavender-primary hover:bg-lavender-hover active:bg-lavender-active" %>
+        <%= link_to "I'm Done!", add_tags_guide_path(guide), class: "px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+    </div>
 <% end %>
-
-<%= link_to "I'm Done!", add_tags_guide_path(guide) %>

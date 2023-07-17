@@ -3,14 +3,11 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static targets = ['preview']
   static values = { imgSrc: String('') }
-
-  // Connect and ensure that an element exists where the image preview will be displayed
   connect() {
-    console.log('image-preview_controller connected')
-    if (this.previewTargets.length > 0) {
-      console.log('Found image preview targets:', this.previewTargets)
-    } else {
-      console.log('No image preview targets found')
+    if (!this.hasPreviewTarget) {
+      throw new Error(
+        'The image preview controller was connected, but no image preview target was found'
+      )
     }
   }
 
