@@ -13,5 +13,6 @@
         <%= form.label :city %>
         <%= form.text_field :city %>
     </p>
+    <%= form.hidden_field :author_id, value: current_user.id %>
     <%= form.submit "Create Guide", class: "" %>
 <% end %>
