@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     end
     resources :activities
   end
-  root "guides#index"
+  root "welcome#index"
 end
