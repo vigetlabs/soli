@@ -11,7 +11,7 @@ class Guide < ApplicationRecord
 
     has_many :activities
     has_one_attached :image
-    belongs_to :user, foreign_key: :author_id
+    belongs_to :author, class_name: "User"
 
     def resize_attached_image
         self.image.variant(resize_to_fit: [100,100])

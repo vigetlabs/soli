@@ -15,7 +15,7 @@ class GuidesController < ApplicationController
     end
 
     def create 
-        @guide = Guide.new(guide_params)
+        @guide = current_user.guides.build(guide_params)
         if @guide.save
             redirect_to @guide
         else
@@ -30,6 +30,7 @@ class GuidesController < ApplicationController
     end
 
     def update
+        @guide = current_user.guides.find(params[:id])
         if guide.update(guide_params)
             redirect_to root_path
         else
@@ -44,6 +45,6 @@ class GuidesController < ApplicationController
         helper_method :guide
 
         def guide_params
-            params.require(:guide).permit(:id, :author_id, :title, :city, :image, tags: [])
+            params.require(:guide).permit(:id, :title, :city, :image, tags: [])
         end
 end

@@ -10,9 +10,9 @@
 <% end %>
 
 <ul>
-    <% @guides.includes(:user).each do |guide| %>
+    <% @guides.includes(:author).each do |guide| %>
         <li>
-            <%= guide.user.username %>
+            <%= guide.author.username %>
             <% if guide.image.attached? %>
                 <%= image_tag guide.resize_attached_image %>
             <% end %>
