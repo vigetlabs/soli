@@ -1,1 +1,19 @@
 <%= current_user.username %>
+
+<p>Posted Guides [<%= current_user.guides.length %>]</p>
+
+<ul>
+    <% current_user.guides.each do |guide| %>
+        <li>
+            <% if guide.image.attached? %>
+                <%= image_tag guide.resize_attached_image %>
+            <% end %>
+            <%= guide.title %>
+            <%= guide.city %>
+            <% guide&.tags.each do |tag| %>
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
+            <% end %>
+            <%= guide.activities.length %> Activities
+        </li>
+    <% end %>
+</ul>
