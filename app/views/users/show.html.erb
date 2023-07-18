@@ -1,9 +1,14 @@
-<%= current_user.username %>
+<%= @user.username %>
+<% if @user == current_user %>
+    <%= render "update_bio" %>
+<% else %>
+    <%= @user.bio %>
+<% end %>
 
-<p>Posted Guides [<%= current_user.guides.length %>]</p>
+<p>Posted Guides [<%= @user.guides.length %>]</p>
 
 <ul>
-    <% current_user.guides.each do |guide| %>
+    <% @user.guides.each do |guide| %>
         <li>
             <% if guide.image.attached? %>
                 <%= image_tag guide.resize_attached_image %>

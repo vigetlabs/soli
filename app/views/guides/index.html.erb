@@ -12,7 +12,7 @@
 <ul>
     <% @guides.includes(:author).each do |guide| %>
         <li>
-            <%= guide.author.username %>
+            <%= link_to guide.author.username, user_path(guide.author) %>
             <% if guide.image.attached? %>
                 <%= image_tag guide.resize_attached_image %>
             <% end %>

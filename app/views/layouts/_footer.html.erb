@@ -1,3 +1,5 @@
-<%= link_to "CREATE", new_guide_path %>
-<%= link_to "HOME", root_path %>
-<%= link_to "PROFILE", user_path(current_user) %>
+<% if user_signed_in? %>
+    <%= link_to "CREATE", new_guide_path %>
+    <%= link_to "HOME", root_path %>
+    <%= link_to "PROFILE", user_path(current_user) %>
+<% end %>
