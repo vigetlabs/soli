@@ -1,7 +1,14 @@
-<div class="container flex flex-col items-center">
+<%# TODO: Figure out if there's a better way to set page-specific background colors %>
+<style>
+    body {
+    background-color: #faf4ff;
+    }
+</style>
+
+<div class="container flex flex-col items-center bg-violet-light-primary">
     <div id="title" class="container flex flex-col items-center">
-        <h1 class="py-2 text-3xl font-headline">Create a Guide</h1>
-        <p class="py-1 mb-5 text-lg italic font-headline">Save memories, inspire others</p>
+        <h1 class="py-1 text-4xl font-semibold font-headline">Create a Guide</h1>
+        <p class="py-1 mb-5 text-lg italic font-light text-violet-dark-primary">Save memories, inspire others</p>
     </div>
     <%= form_with(model: @guide) do |form| %>
         <div class="flex flex-col" data-controller="image-preview">
@@ -13,12 +20,12 @@
             <%= form.text_field :city, class: "text-input", placeholder: "e.g. New York, NY" %>
             <%# Cover photo upload %>
             <%= form.label :image %>
-            <%= form.file_field :image, class: "block text-sm border border-lavender-primary rounded", "data-action":"image-preview#setImgSrcValue" %>
+            <%= form.file_field :image, class: "text-transparent block text-sm border border-violet-primary rounded w-72 h-72", "data-action":"image-preview#setImgSrcValue" %>
             <%# Image preview element (hidden until image is uploaded) %>
             <%# Uses object-cover to crop image to fit to square box %>
-            <img id="preview" data-image-preview-target="preview" class="hidden object-cover rounded w-72 h-72 aspect-square" alt="image upload preview"/>
+            <img id="preview" data-image-preview-target="preview" class="absolute hidden object-cover rounded w-72 h-72 aspect-square" alt="image upload preview"/>
         </div>
-        <%= form.submit "Continue", class: "my-2 mt-6 px-4 py-2 text-white rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold" %>
+        <%= form.submit "Continue >", class: "my-2 mt-6 px-4 py-2 text-form-primary rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold pb-2" %>
     <% end %>
 </div>
 

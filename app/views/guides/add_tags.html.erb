@@ -9,7 +9,7 @@
         <%= form.label :tags, class: "font-bold" %>
         <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) do |b| %>
             <% id_field = "peer/#{b.__id__}" %>
-            <% id_field_2 = "items-center px-2 py-1 border border-form-primary rounded-lg select-none peer-checked/#{b.__id__}:bg-lavender-active"%>
+            <% id_field_2 = "items-center px-2 py-1 border border-form-primary rounded-lg select-none peer-checked/#{b.__id__}:bg-violet-active"%>
             <%= b.check_box id:"#{b.__id__}", class: id_field %>
             <%= b.label for:"#{b.__id__}", class: id_field_2 %>
         <% end %>

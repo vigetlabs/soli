@@ -13,20 +13,41 @@ module.exports = {
       current: 'currentColor',
       white: '#FFFFFF',
       black: '#000000',
+      alert: '#E73943',
       form: {
         primary: '#031830',
         secondary: '#97A0AC'
       },
-      lavender: {
+      violet: {
+        light: {
+          primary: '#FAF4FF',
+          hover: '#F8EFFF',
+          active: '#F1DEFF'
+        },
         primary: '#D195FE',
-        hover: '#BC86E5',
-        active: '#A777CB',
-        border: '#7D5998'
+        hover: '#BE76F4',
+        active: '#9452C6',
+        dark: {
+          primary: '#6E349A',
+          hover: '#402455',
+          active: '#3D155A'
+        },
+        border: '#2B0845'
       },
       periwinkle: {
-        primary: '#6B8FFC',
+        light: {
+          primary: 'EFF2FE',
+          hover: 'E6ECFE',
+          active: 'CCD8FC'
+        },
+        primary: '#5B81F6',
         hover: '#5274DD',
-        active: '#4461B9',
+        active: '#4967C5',
+        dark: {
+          primary: '#4461B9',
+          hover: '#374D94',
+          active: '#293A6F'
+        },
         border: '#293A6F'
       }
     },
