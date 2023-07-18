@@ -45,6 +45,6 @@ class GuidesController < ApplicationController
         helper_method :guide
 
         def guide_params
-            params.require(:guide).permit(:id, :author_id, :title, :city, :image, tags: [])
+            params.require(:guide).permit(:id, :title, :city, :image, tags: [])
         end
 end
