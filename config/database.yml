@@ -81,4 +81,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: soli_production
+  username: soli
+  password: <%= ENV["SOLI_DATABASE_PASSWORD"] %>
