@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :guides, only: [:new, :create, :show, :update, :index] do
     member do
       get :add_tags
+      post :save
     end
     resources :activities
   end
