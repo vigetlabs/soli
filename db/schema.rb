@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_200824) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_201310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +65,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_200824) do
     t.index ["author_id"], name: "index_guides_on_author_id"
   end
 
+  create_table "saved_guides", force: :cascade do |t|
+    t.bigint "guide_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["guide_id"], name: "index_saved_guides_on_guide_id"
+    t.index ["user_id"], name: "index_saved_guides_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", default: "", null: false
@@ -84,4 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_200824) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "guides"
   add_foreign_key "guides", "users", column: "author_id"
+  add_foreign_key "saved_guides", "guides"
+  add_foreign_key "saved_guides", "users"
 end
