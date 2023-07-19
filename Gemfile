@@ -95,3 +95,5 @@ gem "js_from_routes", group: :development
 
 gem "tailwindcss-rails", "~> 2.0"
 gem 'pg_search'
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
