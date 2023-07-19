@@ -1,28 +1,35 @@
 <style>
 body {
-  background-color: #3D155A;
+  background-color: #402455;
 }
 </style>
 
 <div class="container flex flex-col items-center">
-    <%# TODO: Add a Cancel button that shows a modal to delete the in-progress guide %>
-    <h1 class="py-2 text-3xl text-white font-headline">Add Activities</h1>
-    <% if guide.activities.length > 0 %>
-        <ul>
-            <% guide.activities.each do |activity| %>
-                <li>
-                    <% if activity.image.attached? %>
-                        <%= image_tag activity.resize_attached_image %>
-                    <% end %>
-                    <%= activity.title %>
-                    <%= activity.prompt %>: <%= activity.prompt_answer %>
-                    <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.
-                </li>
-            <% end %>
-        </ul>
-    <% end %>
+    <%# Buttons to cancel or finish creating the guide %>
+    <%# TODO: Cancel button should open a confirmation modal %>
+    <div class="flex flex-row pb-8 space-x-40">
+        <%= link_to "X Cancel", root_path, class: "text-white underline py-2 font-bold" %>
+        <%= link_to "Done ✓", add_tags_guide_path(guide), class: "px-4 py-2 font-bold text-form-primary border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+    </div>
+    <div id="title" class="container flex flex-col w-72">
+        <h1 class="py-1 text-3xl text-white font-headline">Add Activities</h1>
+        <% if guide.activities.length > 0 %>
+            <ul>
+                <% guide.activities.each do |activity| %>
+                    <li>
+                        <% if activity.image.attached? %>
+                            <%= image_tag activity.resize_attached_image %>
+                        <% end %>
+                        <%= activity.title %>
+                        <%= activity.prompt %>: <%= activity.prompt_answer %>
+                        <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
 
-    <p class="py-1 mb-5 italic text-white text-md font-headline">Complete at least one activity</p>
+        <p class="py-1 mb-5 italic text-white text-md font-headline">Complete at least one activity</p>
+    </div>
     <div class="p-6 bg-white rounded-md">
         <%= render 'activities/form' %>
     </div>

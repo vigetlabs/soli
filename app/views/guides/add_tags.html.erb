@@ -1,24 +1,25 @@
-<%= form_for guide do |form| %>
-    <div>
-        <%= form.label :tags %>
-        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) %>
-    </div>
+<style>
+    body {
+    background-color: #faf4ff;
+    }
+</style>
 
-    <%# --- Tags are a work in progress; please ignore for now --- %>
-    <div class="flex hidden w-10">
-        <%= form.label :tags, class: "font-bold" %>
-        <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) do |b| %>
-            <% id_field = "peer/#{b.__id__}" %>
-            <% id_field_2 = "items-center px-2 py-1 border border-form-primary rounded-lg select-none peer-checked/#{b.__id__}:bg-violet-active"%>
-            <%= b.check_box id:"#{b.__id__}", class: id_field %>
-            <%= b.label for:"#{b.__id__}", class: id_field_2 %>
-        <% end %>
-        <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
-        <label for="tagA" class="items-center px-2 py-1 border rounded-lg select-none border-form-primary peer-checked/a:bg-form-secondary">tag</label>
-        <input type="checkbox" name="tag" id="tagB" class="hidden peer/b">
-        <label for="tagB" class="items-center px-2 py-1 border rounded-lg select-none border-form-primary peer-checked/b:bg-form-secondary">tag</label>
+<%# TODO: Enforce a three-tag limit %>
+<div class="container flex flex-col items-center">
+    <div id="title" class="container flex flex-col items-center">
+        <h1 class="py-1 text-4xl font-semibold font-headline">Nice Job!</h1>
+        <p class="py-1 mb-5 text-sm">Pick up to three tags to summarize your guide</p>
     </div>
-    <%# --- End of tags section --- %>
-
-    <%= form.submit "Add Tags", class: "" %>
-<% end %>
+    <%= form_for guide do |form| %>
+        <div class="flex flex-wrap items-center justify-center max-w-md space-x-2 space-y-2">
+            <%= form.collection_check_boxes(:tags, Guide::TAG_OPTIONS, :last, :first) do |b| %>
+                <%= b.check_box id:"#{b.__id__}", class: Guide::TAG_IDS[b.value] %>
+                <%= b.label for:"#{b.__id__}", class: Guide::TAG_COLORS[b.value] %>
+            <% end %>
+            <%# <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
+            <label for="tagA" class="items-center px-2 py-1 text-sm font-bold border rounded-full select-none text-form-primary border-form-primary peer-checked/a:bg-golden-active">Learn</label> %>
+        </div>
+        <%# TODO: Add a Cancel button %>
+        <%= form.submit "Post →", class: "my-2 mt-6 px-4 py-2 text-form-primary rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold pb-2" %>
+    <% end %>
+</div>

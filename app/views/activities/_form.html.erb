@@ -6,10 +6,7 @@
         <%# Activity Image Upload %>
         <div class="mb-4" data-controller="image-preview">
             <%= form.label :image %>
-            <%= form.file_field :image, class: "text-transparent block text-sm border border-violet-primary rounded w-72 h-72", "data-action":"image-preview#setImgSrcValue" %>
-            <%# Image preview element (hidden until image is uploaded) %>
-            <%# Uses object-cover to crop image to fit to square box %>
-            <img id="preview" data-image-preview-target="preview" class="hidden object-cover rounded w-72 h-72 aspect-square" alt="image upload preview"/>
+            <%= form.file_field :image, "data-image-preview-target": "uploadButton", class: "text-transparent block text-sm border border-form-primary rounded w-72 h-72", "data-action":"image-preview#setImgSrcValue" %>
         </div>
         <%# Location Field %>
         <%= form.label :location, class: "font-bold" %>
@@ -19,26 +16,23 @@
         <div class="flex flex-row items-center">
             <div class="flex flex-col">
                 <%= form.label :hours_to_complete, class: "hidden" %>
-                <%= form.number_field :hours_to_complete, max: 23, min:0, value: 0, class: "px-4 py-3 max-w-sm border border-violet-primary rounded focus:border-violet-active focus:ring-violet-active" %>
+                <%= form.number_field :hours_to_complete, max: 23, min:0, value: 0, class: "px-4 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
             </div>
             <p class="pl-2 pr-4"> hr </p>
             <div class="flex flex-col">
                 <%= form.label :minutes_to_complete, class: "hidden" %>
-                <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-violet-primary rounded focus:border-violet-active focus:ring-violet-active" %>
+                <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
             </div>
             <p class="pl-2"> min </p>
         </div> 
         <%# Activity Description Prompt dropdown %>
         <%= form.label :prompt, class: "font-bold" %>
-        <%= form.select :prompt, options_for_select(Activity::PROMPTS), {}, class: "text-center border-violet-primary bg-violet-light-active rounded-t border-b-0 focus:ring-0 focus:border-violet-primary" %>
+        <%= form.select :prompt, options_for_select(Activity::PROMPTS), {}, class: "text-center border-violet-primary bg-violet-primary rounded-t border-b-0 focus:ring-0 focus:border-violet-primary" %>
         <%# Activity Description %>
         <%= form.label :prompt_answer, class: "hidden" %>
-        <%= form.text_area :prompt_answer, class: "max-w-sm px-4 py-3 border rounded-b placeholder-form-secondary border-violet-primary focus:border-violet-active focus:ring-violet-active" %>
+        <%= form.text_area :prompt_answer, class: "max-w-sm px-4 py-3 border rounded-b placeholder-form-secondary border-form-secondary focus:border-violet-active focus:ring-0" %>
     </div>
-    <div>
-        <%= form.submit "+ Add Activity", class: "w-max px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded bg-violet-primary hover:bg-violet-hover active:bg-violet-active" %>
-        
-        <%# TODO: Figure out how to move this "I'm done!" buttton outside of the form so that it can be added to the header on show.html.erb %>
-        <%= link_to "I'm Done!", add_tags_guide_path(guide), class: "px-4 py-2 my-2 mt-6 font-bold text-white border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+    <div class="text-center">
+        <%= form.submit "+ Add Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-black border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
     </div>
 <% end %>

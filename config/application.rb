@@ -19,6 +19,26 @@ module Soli
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.tag_options = { 'Eat': 1, 'Entertain': 2, 'Relax': 3, 'Shop': 4, 'Learn': 5, 'Create': 6, 'Exercise': 7, 'Outdoors/Nature': 8, 'Free': 9 }
+    config.tag_options = { 'Eat': 1, 'Entertain': 2, 'Relax': 3, 'Shop': 4, 'Learn': 5, 'Create': 6, 'Exercise': 7, 'Outdoor': 8, 'Free': 9 }
+    id_prepend = "hidden "
+    config.tag_ids = { 1 => id_prepend + "peer/1", 
+      2 => id_prepend + "peer/2", 
+      3 => id_prepend + "peer/3", 
+      4 => id_prepend + "peer/4", 
+      5 => id_prepend + "peer/5", 
+      6 => id_prepend + "peer/6", 
+      7 => id_prepend + "peer/7", 
+      8 => id_prepend + "peer/8", 
+      9 => id_prepend + "peer/9" }
+    style_prepend = "items-center px-2 py-1 text-sm font-bold border rounded-full select-none text-form-primary border-form-primary "
+    config.tag_colors = { 1 => style_prepend + "peer-checked/1:bg-golden-primary", 
+      2 => style_prepend + "peer-checked/2:bg-violet-primary", 
+      3 => style_prepend + "peer-checked/3:bg-violet-light-active", 
+      4 => style_prepend + "peer-checked/4:bg-golden-light-active", 
+      5 => style_prepend + "peer-checked/5:bg-limon-active", 
+      6 => style_prepend + "peer-checked/6:bg-limon-primary", 
+      7 => style_prepend + "peer-checked/7:bg-periwinkle-light-active", 
+      8 => style_prepend + "peer-checked/8:bg-periwinkle-light-hover", 
+      9 => style_prepend + "peer-checked/9:bg-form-secondary" }
   end
 end

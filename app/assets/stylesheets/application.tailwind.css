@@ -5,6 +5,6 @@
 
 @layer components {
   .text-input {
-    @apply max-w-sm px-4 py-3 my-1 border rounded placeholder-form-secondary border-violet-primary focus:border-violet-active focus:ring-violet-active;
+    @apply max-w-sm px-4 py-3 my-1 border rounded placeholder-form-secondary border-form-primary focus:border-violet-active focus:ring-0;
   }
 }
