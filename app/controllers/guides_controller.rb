@@ -38,6 +38,15 @@ class GuidesController < ApplicationController
         end
     end
 
+    def save
+        if SavedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).nil?
+            current_user.saved_guides.build({guide: guide}).save
+        else
+            SavedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).destroy.save
+        end
+        redirect_to root_path
+    end
+
     private
         def guide
             @guide ||= Guide.find(params[:id])

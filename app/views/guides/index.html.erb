@@ -23,6 +23,7 @@
                 <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
             <%= guide.activities.length %> Activities
+            <%= button_to "Favorite", save_guide_path(guide) %>
         </li>
     <% end %>
 </ul>
