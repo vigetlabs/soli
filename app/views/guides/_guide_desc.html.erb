@@ -14,4 +14,4 @@
 <% else %>
     <%= button_to "Favorite", save_guide_path(guide) %>
 <% end %>
-<%= FavoritedGuide.find_by({guide_id: guide.id}) ? FavoritedGuide.where({guide_id: guide.id}).length : 0 %> Favorites
+<%= guide.favorited_guides.count %> Favorites
