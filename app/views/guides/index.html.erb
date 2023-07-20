@@ -23,7 +23,12 @@
                 <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
             <%= guide.activities.length %> Activities
-            <%= button_to "Favorite", save_guide_path(guide) %>
+            <% if current_user == guide.author %>
+                <p>Favorite</p>
+            <% else %>
+                <%= button_to "Favorite", save_guide_path(guide) %>
+            <% end %>
+            <%= SavedGuide.find_by({guide_id: guide.id}) ? SavedGuide.where({guide_id: guide.id}).length : 0 %> Favorites
         </li>
     <% end %>
 </ul>
