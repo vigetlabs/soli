@@ -23,10 +23,10 @@
     <% end %>
 </ul>
 
-<p>Favorited Guides [<%= FavoritedGuide.where({user_id: user.id}).length %>]</p>
+<p>Favorited Guides [<%= user.favorited_guides.count %>]</p>
 
 <ul>
-    <% FavoritedGuide.where({user_id: user.id}).reverse_order.each do |favorited| %>
+    <% user.favorited_guides.reverse_order.each do |favorited| %>
         <li>
             <%= render 'guides/guide_desc', guide: favorited.guide %>
         </li>
