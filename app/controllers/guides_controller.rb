@@ -39,12 +39,12 @@ class GuidesController < ApplicationController
     end
 
     def save
-        if SavedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).nil?
-            current_user.saved_guides.build({guide: guide}).save
+        if FavoritedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).nil?
+            current_user.favorited_guides.build({guide: guide}).save
         else
-            SavedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).destroy.save
+            FavoritedGuide.find_by({guide_id: guide.id, user_id: current_user.id }).destroy.save
         end
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
     end
 
     private

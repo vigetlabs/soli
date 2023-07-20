@@ -8,7 +8,7 @@
 <p>Posted Guides [<%= user.guides.length %>]</p>
 
 <ul>
-    <% user.guides.each do |guide| %>
+    <% user.guides.reverse_order.each do |guide| %>
         <li>
             <% if guide.image.attached? %>
                 <%= image_tag guide.resize_attached_image %>
@@ -19,6 +19,16 @@
                 <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
             <%= guide.activities.length %> Activities
+        </li>
+    <% end %>
+</ul>
+
+<p>Favorited Guides [<%= FavoritedGuide.where({user_id: user.id}).length %>]</p>
+
+<ul>
+    <% FavoritedGuide.where({user_id: user.id}).reverse_order.each do |favorited| %>
+        <li>
+            <%= render 'guides/guide_desc', guide: favorited.guide %>
         </li>
     <% end %>
 </ul>
