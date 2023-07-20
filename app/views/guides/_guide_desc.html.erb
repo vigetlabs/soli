@@ -15,3 +15,4 @@
     <%= button_to "Favorite", save_guide_path(guide) %>
 <% end %>
 <%= guide.favorited_guides.count %> Favorites
+<%= link_to "Show More", detail_guide_path(guide) %>

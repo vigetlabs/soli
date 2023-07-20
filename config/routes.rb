@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get :add_tags
       post :save
+      get :detail
     end
     resources :activities
   end
