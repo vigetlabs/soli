@@ -13,6 +13,7 @@
     <% @guides.includes(:author).each do |guide| %>
         <li>
             <%= render 'guide_desc', guide: guide %>
+            <%= link_to "Show More", detail_guide_path(guide) %>
         </li>
     <% end %>
 </ul>

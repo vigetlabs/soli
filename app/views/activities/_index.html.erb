@@ -1,0 +1,14 @@
+<% if guide.activities.length > 0 %>
+    <ul>
+        <% guide.activities.each do |activity| %>
+            <li>
+                <% if activity.image.attached? %>
+                    <%= image_tag activity.resize_attached_image %>
+                <% end %>
+                <%= activity.title %>
+                <%= activity.prompt %>: <%= activity.prompt_answer %>
+                <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.
+            </li>
+        <% end %>
+    </ul>
+<% end %>
