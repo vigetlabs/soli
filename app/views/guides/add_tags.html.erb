@@ -12,10 +12,7 @@
                 <%= b.check_box id:"#{b.__id__}", class: Guide::TAG_IDS[b.value] %>
                 <%= b.label for:"#{b.__id__}", class: Guide::TAG_COLORS[b.value] %>
             <% end %>
-            <%# <input type="checkbox" name="tag" id="tagA" class="hidden peer/a">
-            <label for="tagA" class="items-center px-2 py-1 text-sm font-bold border rounded-full select-none text-form-primary border-form-primary peer-checked/a:bg-golden-active">Learn</label> %>
         </div>
-        <%# TODO: Add a Cancel button %>
         <div class="text-center space-x-12 pt-6">
             <%= link_to "X Cancel", root_path, class: "text-form-primary my-2 mt-6 px-4 py-2 font-bold rounded border border-alert" %>
             <%= form.submit "Post →", class: "my-2 mt-6 px-4 py-2 text-form-primary rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold pb-2" %>
