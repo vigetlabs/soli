@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_190503) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_201310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_190503) do
     t.index ["guide_id"], name: "index_activities_on_guide_id"
   end
 
+  create_table "favorited_guides", force: :cascade do |t|
+    t.bigint "guide_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["guide_id"], name: "index_favorited_guides_on_guide_id"
+    t.index ["user_id"], name: "index_favorited_guides_on_user_id"
+  end
+
   create_table "guides", force: :cascade do |t|
     t.string "title", null: false
     t.string "tags", default: [], array: true
@@ -74,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_190503) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "bio", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -82,5 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_190503) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "guides"
+  add_foreign_key "favorited_guides", "guides"
+  add_foreign_key "favorited_guides", "users"
   add_foreign_key "guides", "users", column: "author_id"
 end

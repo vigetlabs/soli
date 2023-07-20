@@ -12,17 +12,7 @@
 <ul>
     <% @guides.includes(:author).each do |guide| %>
         <li>
-            <%= guide.author.username %>
-            <% if guide.image.attached? %>
-                <%= image_tag guide.resize_attached_image %>
-            <% end %>
-            <%= guide.created_at.to_date %>
-            <%= guide.title %>
-            <%= guide.city %>
-            <% guide&.tags.each do |tag| %>
-                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
-            <% end %>
-            <%= guide.activities.length %> Activities
+            <%= render 'guide_desc', guide: guide %>
         </li>
     <% end %>
 </ul>

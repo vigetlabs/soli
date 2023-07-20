@@ -1,0 +1,34 @@
+<%= user.username %>
+<% if user == current_user %>
+    <%= render "update_bio" %>
+<% else %>
+    <%= user.bio %>
+<% end %>
+
+<p>Posted Guides [<%= user.guides.length %>]</p>
+
+<ul>
+    <% user.guides.reverse_order.each do |guide| %>
+        <li>
+            <% if guide.image.attached? %>
+                <%= image_tag guide.resize_attached_image %>
+            <% end %>
+            <%= guide.title %>
+            <%= guide.city %>
+            <% guide&.tags.each do |tag| %>
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
+            <% end %>
+            <%= guide.activities.length %> Activities
+        </li>
+    <% end %>
+</ul>
+
+<p>Favorited Guides [<%= user.favorited_guides.count %>]</p>
+
+<ul>
+    <% user.favorited_guides.reverse_order.each do |favorited| %>
+        <li>
+            <%= render 'guides/guide_desc', guide: favorited.guide %>
+        </li>
+    <% end %>
+</ul>
