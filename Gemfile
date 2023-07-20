@@ -92,4 +92,6 @@ gem "whenever", require: false
 gem "hotwire-rails"
 gem "vite_rails"
 gem "js_from_routes", group: :development
+
+gem "tailwindcss-rails", "~> 2.0"
 gem 'pg_search'

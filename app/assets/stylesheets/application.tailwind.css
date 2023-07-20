@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Mulish&family=Niramit&display=swap');
+
+@layer components {
+  .text-input {
+    @apply max-w-sm px-4 py-3 my-1 border rounded placeholder-form-secondary border-form-primary focus:border-violet-active focus:ring-0;
+  }
+}

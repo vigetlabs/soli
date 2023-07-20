@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= vite_client_tag %>
@@ -21,8 +22,10 @@
 
   </head>
 
-  <body>
-    <%= yield %>
-    <%= render "layouts/footer" %>
+  <body class="<%= yield(:body_class) || '' %>">
+    <main class="container flex flex-col px-5 mx-auto my-20">
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </main>
   </body>
 </html>

@@ -1,5 +1,7 @@
 <% if user_signed_in? %>
-    <%= link_to "CREATE", new_guide_path %>
-    <%= link_to "HOME", root_path %>
-    <%= link_to "PROFILE", user_path(current_user) %>
+  <div class="fixed bottom-0 items-center px-8 py-4 space-x-8 text-center bg-white drop-shadow-lg justify-evenly">
+    <%= link_to "Explore", root_path %>
+    <%= link_to "Create", new_guide_path %>
+    <%= link_to "Profile", user_path(current_user) %>
+  </div>
 <% end %>
