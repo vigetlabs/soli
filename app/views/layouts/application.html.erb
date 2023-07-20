@@ -22,7 +22,7 @@
 
   </head>
 
-  <body>
+  <body class="<%= yield(:body_class) || '' %>">
     <main class="container flex flex-col px-5 mx-auto my-20">
       <%= yield %>
       <%= render "layouts/footer" %>
