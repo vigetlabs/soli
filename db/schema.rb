@@ -55,6 +55,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_201310) do
     t.index ["guide_id"], name: "index_activities_on_guide_id"
   end
 
+  create_table "favorited_guides", force: :cascade do |t|
+    t.bigint "guide_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["guide_id"], name: "index_favorited_guides_on_guide_id"
+    t.index ["user_id"], name: "index_favorited_guides_on_user_id"
+  end
+
   create_table "guides", force: :cascade do |t|
     t.string "title", null: false
     t.string "tags", default: [], array: true
@@ -63,13 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_201310) do
     t.string "city", null: false
     t.bigint "author_id"
     t.index ["author_id"], name: "index_guides_on_author_id"
-  end
-
-  create_table "saved_guides", force: :cascade do |t|
-    t.bigint "guide_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["guide_id"], name: "index_saved_guides_on_guide_id"
-    t.index ["user_id"], name: "index_saved_guides_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_201310) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "guides"
+  add_foreign_key "favorited_guides", "guides"
+  add_foreign_key "favorited_guides", "users"
   add_foreign_key "guides", "users", column: "author_id"
-  add_foreign_key "saved_guides", "guides"
-  add_foreign_key "saved_guides", "users"
 end
