@@ -8,6 +8,12 @@ class GuidesController < ApplicationController
             @guides = Guide.order('created_at DESC')
         end
         @guides = params[:tag_queries] ? @guides.tagged_one_of(params[:tag_queries]) : @guides
+        if params[:duration_option]
+            @guides = @guides.filter_by_min_duration(Guide::DURATIONS[params[:duration_option]][0])
+            if Guide::DURATIONS[params[:duration_option]].length == 2
+                @guides = @guides.filter_by_max_duration(Guide::DURATIONS[params[:duration_option]][1])
+            end
+        end
     end
 
     def new 
@@ -32,6 +38,7 @@ class GuidesController < ApplicationController
     def update
         @guide = current_user.guides.find(params[:id])
         if guide.update(guide_params)
+            guide.update_total_time
             redirect_to root_path
         else
             render 'add_tags', status: :unprocessable_entity

@@ -40,5 +40,6 @@ module Soli
       7 => style_prepend + "peer-checked/7:bg-periwinkle-light-active", 
       8 => style_prepend + "peer-checked/8:bg-periwinkle-light-hover", 
       9 => style_prepend + "peer-checked/9:bg-form-secondary" }
+    config.durations = {"Duration" => [0], "< 1 hour" => [0, 60], "1-3 hours" => [60, 180], "3-5 hours" => [180, 300], "> 5 hours" => [300] }
   end
 end
