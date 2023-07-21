@@ -7,6 +7,9 @@
         <%= label_tag tag_name %>
     <% end %>
     <%= submit_tag "", style: "display: none;" %>
+
+    <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys) %>
+    <%= submit_tag "", style: "display: none;" %>
 <% end %>
 
 <ul>
