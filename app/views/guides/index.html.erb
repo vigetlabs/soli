@@ -1,20 +1,27 @@
-<%= form_tag(guides_path, method: "get") do %>
-    <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control" %>
-    <%= submit_tag "", style: "display: none;" %>
+<div class="container flex flex-col items-center">
+    <h1 class="py-1 text-4xl font-semibold font-headline">Soli</h1>
+    <p class="py-1 mb-5 text-lg italic font-light">How will you explore today?</p>
+    <div id="header" class="container flex flex-col w-72 mb-4">
+        <%= form_tag(guides_path, method: "get") do %>
+            <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control" %>
+            <%= submit_tag "", style: "display: none;" %>
 
-    <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
-        <%= check_box_tag "tag_queries[]", tag_id %>
-        <%= label_tag tag_name %>
-    <% end %>
-    <%= submit_tag "", style: "display: none;" %>
-<% end %>
+            <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
+                <%= check_box_tag "tag_queries[]", tag_id %>
+                <%= label_tag tag_name %>
+            <% end %>
+            <%= submit_tag "", style: "display: none;" %>
+        <% end %>
 
-<ul>
-    <% @guides.includes(:author).each do |guide| %>
-        <li>
-            <%= render 'guide_desc', guide: guide %>
-        </li>
-    <% end %>
-</ul>
+    </div>
 
-<%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+    <ul>
+        <% @guides.includes(:author).each do |guide| %>
+            <li>
+                <%= render 'guide_desc', guide: guide %>
+            </li>
+        <% end %>
+    </ul>
+
+    <%# <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+</div>
