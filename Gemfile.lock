@@ -122,6 +122,8 @@ GEM
       globalid (>= 0.3.6)
       railties (>= 5.2.0)
     diff-lcs (1.5.0)
+    dockerfile-rails (1.5.1)
+      rails
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dry-cli (1.0.0)
@@ -203,6 +205,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     noticed (1.6.3)
       http (>= 4.0.0)
@@ -390,6 +394,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -399,6 +404,7 @@ DEPENDENCIES
   devise (~> 4.7, >= 4.7.1)
   devise-bootstrapped!
   devise_masquerade (~> 1.2)
+  dockerfile-rails (>= 1.5)
   factory_bot_rails
   friendly_id (~> 5.3)
   hotwire-rails

@@ -48,6 +48,9 @@ class GuidesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
+    def detail
+    end
+
     private
         def guide
             @guide ||= Guide.find(params[:id])

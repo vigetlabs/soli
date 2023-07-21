@@ -28,7 +28,8 @@
 <ul>
     <% user.favorited_guides.reverse_order.each do |favorited| %>
         <li>
-            <%= render 'guides/guide_desc', guide: favorited.guide %>
+            <%= render "guides/guide_desc", guide: favorited.guide %>
+            <%= link_to "Show More", detail_guide_path(favorited.guide) %>
         </li>
     <% end %>
 </ul>
