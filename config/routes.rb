@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show, :update]
   resources :parts_kit, only: [:index]
-  resources :guides, only: [:new, :create, :show, :update, :index] do
+  resources :guides, only: [:new, :create, :show, :update, :index, :destroy] do
     member do
       get :add_tags
       post :save
