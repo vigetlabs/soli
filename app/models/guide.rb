@@ -19,10 +19,10 @@ class Guide < ApplicationRecord
     validates :city, length: { maximum: 50 }, presence: true
     validates :tags, length: { maximum: 3 }
 
-    has_many :activities, dependent: :destroy
+    has_many :activities
     has_one_attached :image
     belongs_to :author, class_name: "User"
-    has_many :favorited_guides, dependent: :destroy
+    has_many :favorited_guides
 
     def resize_attached_image
         self.image.variant(resize_to_fit: [100,100])
