@@ -26,4 +26,8 @@ class Guide < ApplicationRecord
     def update_total_time
         self.update!({ total_time: self.activities.sum(:minutes_to_complete) + 60 * self.activities.sum(:hours_to_complete) })
     end
+
+    def total_time(min_mins, max_mins)
+        activities.sum(:minutes_to_complete)
+    end
 end
