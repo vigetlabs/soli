@@ -7,7 +7,7 @@
                 <% end %>
                 <%= activity.title %>
                 <%= activity.prompt %>: <%= activity.prompt_answer %>
-                <%= activity.hours_to_complete %> hr. <%= activity.minutes_to_complete %> min.
+                <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.
             </li>
         <% end %>
     </ul>

@@ -7,8 +7,8 @@ class Guide < ApplicationRecord
     include PgSearch::Model
     pg_search_scope :search_by_city, against: :city
     scope :tagged_one_of, -> (tags) { where("tags && ARRAY[?]::varchar[]", tags) }
-    scope :filter_by_min_duration, -> (start_mins) { where("total_time >= (?)", start_mins) }
-    scope :filter_by_max_duration, -> (end_mins) { where("total_time < (?)", end_mins) }
+    # scope :filter_by_min_duration, -> (start_mins) { where("total_time >= (?)", start_mins) }
+    # scope :filter_by_max_duration, -> (end_mins) { where("total_time < (?)", end_mins) }
 
     validates :title, length: { maximum: 50 }, presence: true
     validates :city, length: { maximum: 50 }, presence: true
@@ -23,9 +23,9 @@ class Guide < ApplicationRecord
         self.image.variant(resize_to_fit: [100,100])
     end
 
-    def update_total_time
-        self.update!({ total_time: self.activities.sum(:minutes_to_complete) + 60 * self.activities.sum(:hours_to_complete) })
-    end
+    # def update_total_time
+    #     self.update!({ total_time: self.activities.sum(:minutes_to_complete) })
+    # end
 
     def total_time(min_mins, max_mins)
         activities.sum(:minutes_to_complete)

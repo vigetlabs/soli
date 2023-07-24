@@ -50,7 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_192717) do
     t.datetime "updated_at", null: false
     t.string "prompt", null: false
     t.text "prompt_answer", null: false
-    t.integer "hours_to_complete", null: false
     t.text "location", null: false
     t.index ["guide_id"], name: "index_activities_on_guide_id"
   end
@@ -69,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_192717) do
     t.datetime "updated_at", null: false
     t.string "city", null: false
     t.bigint "author_id"
-    t.integer "total_time"
     t.index ["author_id"], name: "index_guides_on_author_id"
   end
 
