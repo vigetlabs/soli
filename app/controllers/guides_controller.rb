@@ -54,11 +54,6 @@ class GuidesController < ApplicationController
     def detail
     end
 
-    def destroy
-        guide.destroy
-        redirect_to root_path, status: :see_other
-    end
-
     private
         def guide
             @guide ||= Guide.find(params[:id])
