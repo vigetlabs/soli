@@ -8,7 +8,7 @@ class GuidesController < ApplicationController
             @guides = Guide.order('created_at DESC')
         end
         @guides = params[:tag_queries] ? @guides.tagged_one_of(params[:tag_queries]) : @guides
-        if params[:duration_option]
+        if params[:duration_option].present?
             @guides = @guides.filter_by_min_duration(Guide::DURATIONS[params[:duration_option]][0])
             if Guide::DURATIONS[params[:duration_option]].length == 2
                 @guides = @guides.filter_by_max_duration(Guide::DURATIONS[params[:duration_option]][1])
