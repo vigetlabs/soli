@@ -26,7 +26,26 @@ module.exports = {
     'peer-checked/6:bg-limon-primary',
     'peer-checked/7:bg-periwinkle-light-active',
     'peer-checked/8:bg-periwinkle-light-hover',
-    'peer-checked/9:bg-form-secondary'
+    'peer-checked/9:bg-form-secondary',
+    'tag-eat',
+    'tag-entertain',
+    'tag-relax',
+    'tag-shop',
+    'tag-learn',
+    'tag-create',
+    'tag-exercise',
+    'tag-outdoor',
+    'tag-free',
+    'checkbox-eat',
+    'checkbox-entertain',
+    'checkbox-relax',
+    'checkbox-shop',
+    'checkbox-learn',
+    'checkbox-create',
+    'checkbox-exercise',
+    'checkbox-outdoor',
+    'checkbox-free',
+    'bg-golden-primary'
   ],
   theme: {
     colors: {

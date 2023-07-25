@@ -1,26 +1,29 @@
 <div class="container flex flex-col items-center">
     <h1 class="py-1 text-4xl font-semibold font-headline">Soli</h1>
     <p class="py-1 mb-5 text-lg italic font-light">How will you explore today?</p>
-    <div id="header" class="container flex flex-col w-72 mb-4">
+    <div id="header" class="container flex flex-col mb-4 w-72">
         <%= form_tag(guides_path, method: "get") do %>
-            <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control" %>
+            <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control text-input" %>
             <%= submit_tag "", style: "display: none;" %>
-
-            <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
-                <%= check_box_tag "tag_queries[]", tag_id %>
-                <%= label_tag tag_name %>
-            <% end %>
+            <div class="flex flex-wrap items-center justify-center max-w-md space-x-2 space-y-2">
+                <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
+                        <% checkbox_id = "tag_checkbox_#{tag_id}" %>
+                        <% checkbox_class="checkbox-#{tag_name.downcase}" %>
+                        <% label_class="tag-#{tag_name.downcase}" %>
+                        <%= check_box_tag "tag_queries[]", tag_id, false, id: checkbox_id, class: Guide::TAG_IDS[tag_id] %>
+                        <%= label_tag checkbox_id, tag_name, class: Guide::TAG_COLORS[tag_id] %>
+                <% end %>
             <%= submit_tag "", style: "display: none;" %>
+            </div>
         <% end %>
     </div>
     <ul>
         <% @guides.includes(:author).each do |guide| %>
             <li>
                 <%= render 'guide_desc', guide: guide %>
-                <%= link_to "Show More", detail_guide_path(guide) %>
             </li>
         <% end %>
     </ul>
 
-    <%# <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
 </div>

@@ -1,0 +1,7 @@
+{
+  "Icon Include": {
+    "scope": "erb",
+    "prefix": ["icon"],
+    "body": "<%= render partial: \"shared/icon\", locals: { icon_name: \"$l\", class_names: \"$2\" } %>"
+  }
+}
