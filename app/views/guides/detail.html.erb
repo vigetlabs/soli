@@ -1,2 +1,6 @@
+<% if current_user == guide.author %>
+    <%= link_to "Delete", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<% end %>
+
 <%= render "guide_desc", guide: guide %>
 <%= render "activities/index", guide: guide %>
