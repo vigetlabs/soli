@@ -4,7 +4,7 @@
     <%# Buttons to cancel or finish creating the guide %>
     <%# TODO: Cancel button should open a confirmation modal %>
     <div class="flex flex-row pb-8 space-x-40">
-        <%= link_to "X Cancel", root_path, class: "text-white underline py-2 font-bold" %>
+        <%= link_to "X Cancel", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-white underline py-2 font-bold" %>
         <%= link_to "Done ✓", add_tags_guide_path(guide), class: "px-4 py-2 font-bold text-form-primary border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
     </div>
     <div id="title" class="container flex flex-col w-72">
