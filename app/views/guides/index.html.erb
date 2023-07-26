@@ -1,24 +1,33 @@
-<%= form_tag(guides_path, method: "get") do %>
-    <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control" %>
-    <%= submit_tag "", style: "display: none;" %>
+<div class="container flex flex-col items-center">
+    <div class="flex flex-col items-center gap-1 mb-5">
+        <h1 class="text-4xl font-semibold font-headline">Soli</h1>
+        <h2 class="text-lg italic font-light">How will you explore today?</h2>
+    </div>
+    <div id="header" class="container flex flex-col mb-4 w-72" data-controller="discover-search">
+        <%= form_tag(guides_path, method: "get") do %>
+            <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control text-input" %>
+            <%= submit_tag "", style: "display: none;", "data-discover-search-target": "submit" %>
+            <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys) %>
+            <%= submit_tag "", style: "display: none;" %>
+            <div class="flex flex-wrap items-center justify-center max-w-md gap-2">
+                <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
+                        <% checkbox_id = "tag_checkbox_#{tag_id}" %>
+                        <% checkbox_class="checkbox-#{tag_name.downcase}" %>
+                        <% label_class="tag-#{tag_name.downcase}" %>
+                        <%= check_box_tag "tag_queries[]", tag_id, false, id: checkbox_id, class: Guide::TAG_IDS[tag_id], "data-action":"discover-search#submitForm" %>
+                        <%= label_tag checkbox_id, tag_name, class: Guide::TAG_COLORS[tag_id] %>
+                <% end %>
+            <%= submit_tag "", style: "display: none;" %>
+            </div>
+        <% end %>
+    </div>
+    <ul>
+        <% @guides.includes(:author).each do |guide| %>
+            <li>
+                <%= render 'guide_desc', guide: guide %>
+            </li>
+        <% end %>
+    </ul>
 
-    <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
-        <%= check_box_tag "tag_queries[]", tag_id %>
-        <%= label_tag tag_name %>
-    <% end %>
-    <%= submit_tag "", style: "display: none;" %>
-
-    <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys) %>
-    <%= submit_tag "", style: "display: none;" %>
-<% end %>
-
-<ul>
-    <% @guides.includes(:author).each do |guide| %>
-        <li>
-            <%= render 'guide_desc', guide: guide %>
-            <%= link_to "Show More", detail_guide_path(guide) %>
-        </li>
-    <% end %>
-</ul>
-
-<%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete  %>
+</div>

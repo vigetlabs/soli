@@ -1,17 +1,65 @@
-<%= link_to guide.author.username, user_path(guide.author) %>
-<% if guide.image.attached? %>
-    <%= image_tag guide.resize_attached_image %>
-<% end %>
-<%= guide.created_at.to_date %>
-<%= guide.title %>
-<%= guide.city %>
-<% guide&.tags.each do |tag| %>
-    <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
-<% end %>
-<%= guide.activities.length %> Activities
-<% if current_user == guide.author %>
-    <p>Favorite</p>
-<% else %>
-    <%= button_to "Favorite", save_guide_path(guide) %>
-<% end %>
-<%= guide.favorited_guides.count %> Favorites
+<div class="p-4 border rounded-t">
+    <% if guide.image.attached? %>
+        <a href="<%= detail_guide_path(guide) %>">
+            <%= image_tag guide.resize_attached_image %>
+        </a>
+    <% end %>
+    <div id="author-date" class="flex">
+        <%= link_to guide.author.username, user_path(guide.author), class:"text-form-primary" %>
+        <div class="flex text-form-secondary">
+            <p>&nbsp;on&nbsp;</p>
+            <%= guide.created_at.to_date %>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-between border-b border-dashed border-form-secondary">
+        <%# Guide Title and City %>
+        <a href="<%= detail_guide_path(guide) %>" class="flex flex-col">
+            <p class="text-xl font-semibold font-headline">
+                <%= guide.title %>
+            </p>
+            <p class="mb-1 italic">
+                <%= guide.city %>
+            </p>
+        </a>
+        <%# Guide Favorite Button %>
+        <div class="text-xs text-center text-form-secondary">
+            <% if current_user == guide.author %>
+                <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px]" } %>
+            <% else %>
+                <%# if the current user has the guide favorited already %>
+                <% if current_user.favorited_guides.where(guide_id: guide.id).length != 0 %>
+                    <%= button_to "Unfavorite", save_guide_path(guide) %>
+                <% else %>
+                    <%= button_to "Favorite", save_guide_path(guide) %>
+                <% end %>
+            <% end %>
+            <%= guide.favorited_guides.count %>
+        </div>
+    </div>
+    <%# Guide Stats (time, activity count, tags) %>
+    <div class="flex pt-1 text-sm">
+        <%# Total Time %>
+        <div class="pr-2 mr-2 border-r border-dashed border-form-secondary">
+            <%= guide.activities.sum(:minutes_to_complete) / 60 %> hr
+            <%= guide.activities.sum(:minutes_to_complete) % 60 %> min
+        </div>
+        <%# Activity Count %>
+        <div class="pr-2 mr-2 border-r border-dashed border-form-secondary">
+            <%= guide.activities.length %> <%= guide.activities.length == 1 ? "Activity" : "Activities" %>
+        </div>
+        <%# Tags %>
+        <div class="flex gap-1">
+            <% guide.tags.each do |tag| %>
+                <% if tag == "" %>
+                    <% next %>
+                <% elsif tag == "1" %>
+                    <%= render partial: "shared/icon", locals: { icon_name: "food", class_names: "h-4 bg-violet-primary rounded" } %>
+                <% elsif tag == "8" %>
+                    <%= render partial: "shared/icon", locals: { icon_name: "outdoor", class_names: "h-4" } %>
+                <% end %>
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
+            <% end %>
+        </div>
+    </div>
+</div>
