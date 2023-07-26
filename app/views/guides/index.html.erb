@@ -1,3 +1,10 @@
+<div class="mb-5 flex flex-col">
+    <div class="mb-4 flex-1 flex justify-center">
+        <%= render "logo" %>
+    </div>
+    <p class="flex-1 italic text-base text-center">How will you explore today?</p>
+</div>
+
 <%= form_tag(guides_path, method: "get") do %>
     <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control" %>
     <%= submit_tag "", style: "display: none;" %>
