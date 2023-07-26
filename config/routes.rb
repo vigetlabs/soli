@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    member do
+      get :update_profile
+    end
+  end
   resources :parts_kit, only: [:index]
   resources :guides, only: [:new, :create, :show, :update, :index, :destroy] do
     member do

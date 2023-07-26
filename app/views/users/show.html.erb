@@ -1,9 +1,11 @@
-<%= user.username %>
-<% if user == current_user %>
-    <%= render "update_bio" %>
-<% else %>
-    <%= user.bio %>
+<% if current_user == user %>
+    <%= render "settings" %>
 <% end %>
+
+<div class="flex flex-col text-center">
+    <div class="flex-1 font-headline text-red text-xl font-bold mb-3"><%= user.username %></div>
+    <p class="flex-1 text-sm"><%= user.bio %></p>
+</div>
 
 <p>Posted Guides [<%= user.guides.length %>]</p>
 
