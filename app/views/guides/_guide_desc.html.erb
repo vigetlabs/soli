@@ -23,18 +23,24 @@
             </p>
         </a>
         <%# Guide Favorite Button %>
-        <div class="text-xs text-center text-form-secondary">
+        <div>
             <% if current_user == guide.author %>
-                <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px]" } %>
+                <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px] stroke-form-secondary" } %>
             <% else %>
                 <%# if the current user has the guide favorited already %>
                 <% if current_user.favorited_guides.where(guide_id: guide.id).length != 0 %>
-                    <%= button_to "Unfavorite", save_guide_path(guide) %>
+                    <%= button_to save_guide_path(guide) do %>
+                        <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px] stroke-violet-active fill-violet-primary" } %>
+                    <% end %>
                 <% else %>
-                    <%= button_to "Favorite", save_guide_path(guide) %>
+                    <%= button_to save_guide_path(guide) do %>
+                        <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px] stroke-violet-active" } %>
+                    <% end %>
                 <% end %>
             <% end %>
-            <%= guide.favorited_guides.count %>
+            <div class="text-xs text-center text-form-secondary">
+                <%= guide.favorited_guides.count %>
+            </div>
         </div>
     </div>
     <%# Guide Stats (time, activity count, tags) %>
