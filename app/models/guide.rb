@@ -17,7 +17,7 @@ class Guide < ApplicationRecord
 
     validates :title, length: { maximum: 50 }, presence: true
     validates :city, length: { maximum: 50 }, presence: true
-    validates :tags, length: { maximum: 3 }
+    validates :tags, length: { maximum: 4 }
 
     has_many :activities, dependent: :destroy
     has_one_attached :image
