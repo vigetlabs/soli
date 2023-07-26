@@ -4,27 +4,26 @@
             <%= image_tag guide.resize_attached_image %>
         </a>
     <% end %>
-    <div id="author-date" class="flex flex-row">
+    <div id="author-date" class="flex">
         <%= link_to guide.author.username, user_path(guide.author), class:"text-form-primary" %>
-        <div class="flex flex-row text-form-secondary">
+        <div class="flex text-form-secondary">
             <p>&nbsp;on&nbsp;</p>
             <%= guide.created_at.to_date %>
         </div>
     </div>
 
-    <%# TODO: Fix error when applying styles directly to erb elements %>
-    <div class="flex flex-row items-center justify-between border-b border-dashed border-form-secondary">
-        <div id="title-city" class="flex flex-col w-56">
-            <a href="<%= detail_guide_path(guide) %>">
-                <div class="text-xl font-semibold font-headline">
-                    <%= guide.title %>
-                </div>
-                <div class="mb-1 italic">
-                    <%= guide.city %>
-                </div>
-            </a>
-        </div>
-        <div id="favorite" class="text-xs text-center text-form-secondary">
+    <div class="flex items-center justify-between border-b border-dashed border-form-secondary">
+        <%# Guide Title and City %>
+        <a href="<%= detail_guide_path(guide) %>" class="flex flex-col">
+            <p class="text-xl font-semibold font-headline">
+                <%= guide.title %>
+            </p>
+            <p class="mb-1 italic">
+                <%= guide.city %>
+            </p>
+        </a>
+        <%# Guide Favorite Button %>
+        <div class="text-xs text-center text-form-secondary">
             <% if current_user == guide.author %>
                 <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px]" } %>
             <% else %>
@@ -38,15 +37,19 @@
             <%= guide.favorited_guides.count %>
         </div>
     </div>
-    <div id="guide-stats" class="flex flex-row text-sm">
-        <div id="time" class="pt-1 pr-2 mr-2 border-r border-dashed border-form-secondary">
+    <%# Guide Stats (time, activity count, tags) %>
+    <div class="flex pt-1 text-sm">
+        <%# Total Time %>
+        <div class="pr-2 mr-2 border-r border-dashed border-form-secondary">
             <%= guide.activities.sum(:minutes_to_complete) / 60 %> hr
             <%= guide.activities.sum(:minutes_to_complete) % 60 %> min
         </div>
-        <div id="activity-count" class="pt-1 pr-2 mr-2 border-r border-dashed border-form-secondary">
+        <%# Activity Count %>
+        <div class="pr-2 mr-2 border-r border-dashed border-form-secondary">
             <%= guide.activities.length %> <%= guide.activities.length == 1 ? "Activity" : "Activities" %>
         </div>
-        <div id="tags" class="flex flex-row pt-1">
+        <%# Tags %>
+        <div class="flex gap-1">
             <% guide.tags.each do |tag| %>
                 <% if tag == "" %>
                     <% next %>
@@ -55,7 +58,7 @@
                 <% elsif tag == "8" %>
                     <%= render partial: "shared/icon", locals: { icon_name: "outdoor", class_names: "h-4" } %>
                 <% end %>
-                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>&nbsp;
+                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
         </div>
     </div>
