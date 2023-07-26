@@ -25,7 +25,7 @@
         <%# Guide Favorite Button %>
         <div>
             <% if current_user == guide.author %>
-                <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px] stroke-form-secondary" } %>
+                <%= render partial: 'shared/icon', locals: { icon_name: 'favorites', class_names:"h-[23px] stroke-form-secondary fill-form-secondary" } %>
             <% else %>
                 <%# if the current user has the guide favorited already %>
                 <% if current_user.favorited_guides.where(guide_id: guide.id).length != 0 %>
