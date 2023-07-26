@@ -14,7 +14,7 @@
             <% end %>
         </div>
         <div class="text-center space-x-12 pt-6">
-            <%= link_to "X Cancel", root_path, class: "text-form-primary my-2 mt-6 px-4 py-2 font-bold rounded border border-alert" %>
+            <%= link_to "X Cancel", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "text-form-primary my-2 mt-6 px-4 py-2 font-bold rounded border border-alert" %>
             <%= form.submit "Post →", class: "my-2 mt-6 px-4 py-2 text-form-primary rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold pb-2" %>
         </div>
     <% end %>

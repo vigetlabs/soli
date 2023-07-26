@@ -5,6 +5,8 @@
         <%= form_tag(guides_path, method: "get") do %>
             <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control text-input" %>
             <%= submit_tag "", style: "display: none;" %>
+            <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys) %>
+            <%= submit_tag "", style: "display: none;" %>
             <div class="flex flex-wrap items-center justify-center max-w-md space-x-2 space-y-2">
                 <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
                         <% checkbox_id = "tag_checkbox_#{tag_id}" %>

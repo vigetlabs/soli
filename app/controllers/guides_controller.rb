@@ -8,6 +8,9 @@ class GuidesController < ApplicationController
             @guides = Guide.order('created_at DESC')
         end
         @guides = params[:tag_queries] ? @guides.tagged_one_of(params[:tag_queries]) : @guides
+        if params[:duration_option].present? && params[:duration_option] != "Duration"
+            @guides = @guides.filter_by_duration(Guide::DURATIONS[params[:duration_option]][0], Guide::DURATIONS[params[:duration_option]][1] || -1)
+        end
     end
 
     def new 
@@ -49,6 +52,11 @@ class GuidesController < ApplicationController
     end
 
     def detail
+    end
+
+    def destroy
+        guide.destroy
+        redirect_to root_path, status: :see_other
     end
 
     private
