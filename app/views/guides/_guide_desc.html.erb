@@ -40,8 +40,8 @@
     </div>
     <div id="guide-stats" class="flex flex-row text-sm">
         <div id="time" class="pt-1 pr-2 mr-2 border-r border-dashed border-form-secondary">
-            <%= guide.total_activity_time / 60 %> hr
-            <%= guide.total_activity_time % 60 %> min
+            <%= guide.activities.sum(:minutes_to_complete) / 60 %> hr
+            <%= guide.activities.sum(:minutes_to_complete) % 60 %> min
         </div>
         <div id="activity-count" class="pt-1 pr-2 mr-2 border-r border-dashed border-form-secondary">
             <%= guide.activities.length %> <%= guide.activities.length == 1 ? "Activity" : "Activities" %>

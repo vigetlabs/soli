@@ -9,7 +9,7 @@
   }
 
   /* TODO: Convert these to JS */
-  .tag-eat {
+  /* .tag-eat {
     @apply items-center px-2 py-1 text-sm font-bold border rounded-full select-none text-form-primary border-form-primary peer-checked/1:bg-golden-primary;
   }
 
@@ -79,5 +79,5 @@
 
   .checkbox-free {
     @apply hidden peer/9;
-  }
+  } */
 }
