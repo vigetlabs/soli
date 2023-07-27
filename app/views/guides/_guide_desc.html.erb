@@ -1,10 +1,12 @@
-<div class="p-4 border rounded-t">
+<div class="max-w-lg p-4 border rounded-t">
+    <%# Guide Image %>
     <% if guide.image.attached? %>
         <a href="<%= detail_guide_path(guide) %>">
             <%= image_tag guide.resize_attached_image %>
         </a>
     <% end %>
-    <div id="author-date" class="flex">
+    <%# Guide Author and Date %>
+    <div class="flex">
         <%= link_to guide.author.username, user_path(guide.author), class:"text-form-primary" %>
         <div class="flex text-form-secondary">
             <p>&nbsp;on&nbsp;</p>
@@ -12,7 +14,7 @@
         </div>
     </div>
 
-    <div class="flex items-center justify-between border-b border-dashed border-form-secondary">
+    <div class="flex items-center justify-between gap-2 border-b border-dashed border-form-secondary">
         <%# Guide Title and City %>
         <a href="<%= detail_guide_path(guide) %>" class="flex flex-col">
             <p class="text-xl font-semibold font-headline">
@@ -59,12 +61,52 @@
             <% guide.tags.each do |tag| %>
                 <% if tag == "" %>
                     <% next %>
+                <%# Eat %>
                 <% elsif tag == "1" %>
-                    <%= render partial: "shared/icon", locals: { icon_name: "food", class_names: "h-4 bg-violet-primary rounded" } %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-golden-primary">
+                        <%= render partial: "shared/icon", locals: { icon_name: "food", class_names: "h-4" } %>
+                    </div>
+                <%# Entertain %>
+                <% elsif tag == "2" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-violet-primary">
+                        <%= render partial: "shared/icon", locals: { icon_name: "entertain", class_names: "h-4" } %>
+                    </div>
+                <%# Relax %>
+                <% elsif tag == "3" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-violet-light-active">
+                        <%= render partial: "shared/icon", locals: { icon_name: "relax", class_names: "h-4" } %>
+                    </div>
+                <%# Shop %>
+                <% elsif tag == "4" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-golden-light-active">
+                        <%= render partial: "shared/icon", locals: { icon_name: "shop", class_names: "h-4" } %>
+                    </div>
+                <%# Learn %>
+                <% elsif tag == "5" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-limon-hover">
+                        <%= render partial: "shared/icon", locals: { icon_name: "learn", class_names: "h-4" } %>
+                    </div>
+                <%# Create %>
+                <% elsif tag == "6" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-limon-primary">
+                        <%= render partial: "shared/icon", locals: { icon_name: "create", class_names: "h-4" } %>
+                    </div>
+                <%# Exercise %>
+                <% elsif tag == "7" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-periwinkle-light-active">
+                        <%= render partial: "shared/icon", locals: { icon_name: "exercise", class_names: "h-4" } %>
+                    </div>
+                <%# Outdoor %>
                 <% elsif tag == "8" %>
-                    <%= render partial: "shared/icon", locals: { icon_name: "outdoor", class_names: "h-4" } %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-periwinkle-light-hover">
+                        <%= render partial: "shared/icon", locals: { icon_name: "outdoor", class_names: "h-4" } %>
+                    </div>
+                <%# Free %>
+                <% elsif tag == "9" %>
+                    <div class="flex justify-center w-8 p-1 text-center rounded-full bg-form-secondary">
+                        <%= render partial: "shared/icon", locals: { icon_name: "free", class_names: "h-4" } %>
+                    </div>
                 <% end %>
-                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
             <% end %>
         </div>
     </div>
