@@ -1,11 +1,11 @@
 <div class="container flex flex-col items-center">
     <div class="flex flex-col items-center gap-1 mb-5">
-        <h1 class="text-4xl font-semibold font-headline">Soli</h1>
+        <%= render partial: "shared/icon", locals: { icon_name: "logo", class_names: "" } %>
         <h2 class="text-lg italic font-light">How will you explore today?</h2>
     </div>
     <div id="header" class="container flex flex-col mb-4 w-72" data-controller="discover-search">
         <%= form_tag(guides_path, method: "get") do %>
-            <%= text_field_tag :city_query, nil, placeholder: "Search for a City", class: "form-control text-input" %>
+            <%= text_field_tag :city_query, nil, placeholder: "Search by city...", class: "form-control text-input" %>
             <%= submit_tag "", style: "display: none;", "data-discover-search-target": "submit" %>
             <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys) %>
             <%= submit_tag "", style: "display: none;" %>
