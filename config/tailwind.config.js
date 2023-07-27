@@ -9,15 +9,9 @@ module.exports = {
   ],
   safelist: [
     'rounded-full',
-    'peer/1',
-    'peer/2',
-    'peer/3',
-    'peer/4',
-    'peer/5',
-    'peer/6',
-    'peer/7',
-    'peer/8',
-    'peer/9',
+    {
+      pattern: /peer\/\d/
+    },
     'peer-checked/1:bg-golden-primary',
     'peer-checked/2:bg-violet-primary',
     'peer-checked/3:bg-violet-light-active',
