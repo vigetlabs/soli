@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
     def update
         user.update(user_params)
+        if user.save
+            redirect_to user
+        end
+    end
+
+    def edit_profile
     end
 
     private
@@ -13,6 +19,6 @@ class UsersController < ApplicationController
         helper_method :user
 
         def user_params
-            params.require(:user).permit(:id, :bio)
+            params.require(:user).permit(:id, :username, :bio)
         end
 end

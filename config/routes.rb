@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show, :update] do
     member do
-      get :update_profile
+      get :edit_profile
     end
   end
   resources :parts_kit, only: [:index]
