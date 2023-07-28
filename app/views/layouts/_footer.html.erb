@@ -1,7 +1,16 @@
 <% if user_signed_in? %>
-  <div class="fixed bottom-0 items-center px-8 py-4 space-x-8 text-center bg-white drop-shadow-lg justify-evenly">
-    <%= link_to "Explore", root_path %>
-    <%= link_to "Create", new_guide_path %>
-    <%= link_to "Profile", user_path(current_user) %>
+  <div class="fixed bottom-0 flex items-center self-center justify-center w-full gap-12 px-10 py-2 text-center bg-white sm:w-auto rounded-t-md drop-shadow-lg">
+    <%= link_to root_path, class:"flex flex-col items-center" do %>
+      <%= render partial: "shared/icon", locals: { icon_name: "nav-explore", class_names: "h-10" } %>
+      <p class="text-sm">Explore</p>
+    <% end %>
+    <%= link_to new_guide_path, class:"flex flex-col items-center" do %>
+      <%= render partial: "shared/icon", locals: { icon_name: "nav-create", class_names: "h-12" } %>
+      <p class="text-sm">Create</p>
+    <% end %>
+    <%= link_to user_path(current_user), class:"flex flex-col items-center" do %>
+      <%= render partial: "shared/icon", locals: { icon_name: "nav-profile", class_names: "h-10" } %>
+      <p class="text-sm">Profile</p>
+    <% end %>
   </div>
 <% end %>
