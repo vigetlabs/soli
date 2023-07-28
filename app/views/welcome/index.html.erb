@@ -1,2 +1,9 @@
-<%= link_to "Create Account", new_user_registration_path %>
-<%= link_to "Log In", new_user_session_path %>
+<% content_for :body_class, 'bg-violet-light-primary' %>
+
+<div class="flex flex-col items-center justify-center">
+  <h1 class="w-56 mb-2 text-5xl font-bold font-headline">explore solo today</h1>
+  <h2 class="w-56 mb-8 text-lg italic font-light text-violet-dark-primary">The world is your oyster</h2>
+  <%= link_to "Create Account", new_user_registration_path, class: "px-4 py-2 mb-10 font-bold text-black border-0 rounded bg-violet-primary hover:bg-violet-hover active:bg-violet-active" %>
+  <p>Already a user?</p>
+  <%= link_to "Log In", new_user_session_path, class: "px-4 py-2 mt-2 font-bold text-black border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+</div>

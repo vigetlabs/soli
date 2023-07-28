@@ -1,31 +1,38 @@
-<h2>Sign up</h2>
+<% content_for :body_class, 'bg-violet-light-primary' %>
+<div class="flex justify-center">
+  <div class="flex flex-col w-80">
+    <h1 class="mb-8 text-3xl font-headline">Sign Up</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="flex flex-col gap-2">
+        <div class="flex flex-col field">
+          <%= f.label :email, class:"font-bold" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"text-input", placeholder: "Enter email address" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="flex flex-col field">
+          <%= f.label "Create Username", class:"font-bold" %>
+          <%= f.text_field :username, autofocus: true, class:"text-input", placeholder: "Enter a username" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <div class="flex flex-col field">
+          <%= f.label :password, class:"font-bold" %>
+          <% if @minimum_password_length %>
+            <p class="text-sm italic">(<%= @minimum_password_length %> characters minimum)</p>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"text-input", placeholder: "Enter a password" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="flex flex-col field">
+          <%= f.label "Confirm Password", class:"font-bold" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"text-input", placeholder: "Re-enter password" %>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <div class="flex justify-center mt-10 actions">
+        <%= f.submit "Join!", class:"px-4 py-2 mb-10 font-bold text-black border-0 rounded bg-violet-primary hover:bg-violet-hover active:bg-violet-active" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
