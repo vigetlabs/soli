@@ -17,15 +17,8 @@
     <ul>
         <% user.guides.reverse_order.each do |guide| %>
             <li>
-                <% if guide.image.attached? %>
-                    <%= image_tag guide.image, class: "rounded w-72 h-72 object-cover mb-4" %>
-                <% end %>
-                <%= guide.title %>
-                <%= guide.city %>
-                <% guide&.tags.each do |tag| %>
-                    <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
-                <% end %>
-                <%= guide.activities.length %> Activities
+                <%= render "guides/guide_desc", guide: guide %>
+                <%= link_to "Show More", detail_guide_path(guide) %>
             </li>
         <% end %>
     </ul>
