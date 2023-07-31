@@ -1,9 +1,9 @@
 <% if current_user == user %>
-    <div class="h-[139px] w-full bg-[url('dark_banner.png')]">
+    <div class="h-[139px] w-screen bg-[url('dark_banner.png')]">
         <%= render "settings" %>
     </div>
 <% else %>
-    <div class="h-[139px] w-full bg-[url('light_banner.png')]"></div>
+    <div class="h-[139px] w-screen bg-[url('light_banner.png')]"></div>
 <% end %>
 
 <div class="px-5 mt-5">
