@@ -1,2 +1,12 @@
-<%= button_to "Logout", destroy_user_session_path, method: :delete  %>
-<%= link_to "Edit Profile", edit_profile_user_path(current_user) %>
+<div class="absolute top-5 right-5 flex">
+    <div class="self-center">
+        <%= render partial: "shared/icon", locals: { icon_name: "edit", class_names: "" } %>
+    </div>
+    <%= link_to "Edit Profile", edit_profile_user_path(current_user), class: "text-sm text-white ml-2" %>
+</div>
+<div class="absolute top-12 right-5 flex">
+    <div class="self-center">
+        <%= render partial: "shared/icon", locals: { icon_name: "logout", class_names: "" } %>
+    </div>
+    <%= button_to "Log Out", destroy_user_session_path, class: "text-sm text-white ml-2", method: :delete  %>
+</div>
