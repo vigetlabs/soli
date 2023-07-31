@@ -5,7 +5,7 @@
                 <p class="flex items-center justify-center w-10 h-10 text-xl font-semibold bg-white border-2 rounded-full font-headline border-violet-primary">
                     <%= index + 1 %>
                 </p>
-                <div class="max-w-lg p-4 rounded">
+                <div class="max-w-lg px-4 rounded">
                     <%# Activity Image %>
                     <% if activity.image.attached? %>
                         <%= image_tag activity.image, class: "rounded w-72 h-72 object-cover mb-2" %>

@@ -24,7 +24,7 @@
             </div>
         <% end %>
     </div>
-    <ul class="flex flex-col gap-8">
+    <ul class="flex flex-col gap-6">
         <% @guides.includes(:author).each do |guide| %>
             <li>
                 <%= render 'guide_desc', guide: guide %>
