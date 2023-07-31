@@ -2,7 +2,7 @@
     <%# Guide Image %>
     <% if guide.image.attached? %>
         <a href="<%= detail_guide_path(guide) %>">
-            <%= image_tag guide.resize_attached_image %>
+            <%= image_tag guide.image, class: "rounded w-72 h-72 object-cover mb-4" %>
         </a>
     <% end %>
     <%# Guide Author and Date %>

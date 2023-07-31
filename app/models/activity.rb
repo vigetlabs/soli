@@ -9,8 +9,4 @@ class Activity < ApplicationRecord
 
     belongs_to :guide
     has_one_attached :image
-
-    def resize_attached_image
-        self.image.variant(resize_to_fit: [100,100])
-    end
 end

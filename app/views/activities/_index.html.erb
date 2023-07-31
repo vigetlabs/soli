@@ -8,7 +8,7 @@
                 <div class="max-w-lg p-4 rounded">
                     <%# Activity Image %>
                     <% if activity.image.attached? %>
-                        <%= image_tag activity.resize_attached_image %>
+                        <%= image_tag activity.image, class: "rounded w-72 h-72 object-cover mb-2" %>
                     <% end %>
                     <%# Title and Time %>
                     <div class="w-64 pb-2 mb-2 border-b border-dashed border-form-secondary">
