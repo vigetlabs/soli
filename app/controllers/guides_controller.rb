@@ -11,6 +11,9 @@ class GuidesController < ApplicationController
         if params[:duration_option].present? && params[:duration_option] != "Duration"
             @guides = @guides.filter_by_duration(Guide::DURATIONS[params[:duration_option]][0], Guide::DURATIONS[params[:duration_option]][1] || -1)
         end
+        @tags = params[:tag_queries]
+        @duration = params[:duration_option]
+        @city = params[:city_query]
     end
 
     def new 
