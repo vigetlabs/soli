@@ -1,35 +1,43 @@
-<%= user.username %>
-<% if user == current_user %>
-    <%= render "update_bio" %>
+<% if current_user == user %>
+    <div class="h-[139px] w-screen bg-[url('dark_banner.png')]">
+        <%= render "settings" %>
+    </div>
 <% else %>
-    <%= user.bio %>
+    <div class="h-[139px] w-screen bg-[url('light_banner.png')]"></div>
 <% end %>
 
-<p>Posted Guides [<%= user.guides.length %>]</p>
+<div class="px-5 mt-5">
+    <div class="flex flex-col text-center">
+        <div class="flex-1 font-headline text-xl font-bold mb-2"><%= user.username %></div>
+        <p class="flex-1 text-sm"><%= user.bio %></p>
+    </div>
 
-<ul>
-    <% user.guides.reverse_order.each do |guide| %>
-        <li>
-            <% if guide.image.attached? %>
-                <%= image_tag guide.resize_attached_image %>
-            <% end %>
-            <%= guide.title %>
-            <%= guide.city %>
-            <% guide&.tags.each do |tag| %>
-                <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
-            <% end %>
-            <%= guide.activities.length %> Activities
-        </li>
-    <% end %>
-</ul>
+    <p>Posted Guides [<%= user.guides.length %>]</p>
 
-<p>Favorited Guides [<%= user.favorited_guides.count %>]</p>
+    <ul>
+        <% user.guides.reverse_order.each do |guide| %>
+            <li>
+                <% if guide.image.attached? %>
+                    <%= image_tag guide.resize_attached_image %>
+                <% end %>
+                <%= guide.title %>
+                <%= guide.city %>
+                <% guide&.tags.each do |tag| %>
+                    <%= Guide::TAG_OPTIONS.key(tag.to_i) %>
+                <% end %>
+                <%= guide.activities.length %> Activities
+            </li>
+        <% end %>
+    </ul>
 
-<ul>
-    <% user.favorited_guides.reverse_order.each do |favorited| %>
-        <li>
-            <%= render "guides/guide_desc", guide: favorited.guide %>
-            <%= link_to "Show More", detail_guide_path(favorited.guide) %>
-        </li>
-    <% end %>
-</ul>
+    <p>Favorited Guides [<%= user.favorited_guides.count %>]</p>
+
+    <ul>
+        <% user.favorited_guides.reverse_order.each do |favorited| %>
+            <li>
+                <%= render "guides/guide_desc", guide: favorited.guide %>
+                <%= link_to "Show More", detail_guide_path(favorited.guide) %>
+            </li>
+        <% end %>
+    </ul>
+</div>

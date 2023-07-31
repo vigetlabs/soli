@@ -1,0 +1,18 @@
+<div class="container flex flex-col items-center px-5 mt-20">
+    <%= form_with model: user, url: user_path(user), method: :patch do |f| %>
+        <div class="flex flex-col">
+            <div class="flex flex-row pb-8 space-x-40">
+                <%= link_to "X Cancel", user, data: { turbo_confirm: 'Are you sure?' }, class: "text-periwinkle underline py-2 font-bold" %>
+                <%= f.submit "Done ✓", class: "px-4 py-2 font-bold text-form-primary border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+            </div>
+
+            <h1 class="mb-8 text-2xl font-bold font-headline">Edit Profile</h1>
+
+            <%= f.label :username, class: "font-bold mb-2" %>
+            <%= f.text_field :username, class: "text-input mb-4", default: user.username %>
+
+            <%= f.label :bio, class: "font-bold mb-2" %>
+            <%= f.text_field :bio, class: "text-input", default: user.bio %>
+        </div>
+    <% end %>
+</div>
