@@ -15,18 +15,9 @@
         <%# TODO: Adjust styling of current activities list based on feedback from designers %>
         <% if guide.activities.length > 0 %>
             <p class="py-1 italic text-white text-md font-headline">Current activities:</p>
-            <ul class="my-4 space-y-2">
-                <% guide.activities.each do |activity| %>
-                    <li class="bg-white rounded-md">
-                        <% if activity.image.attached? %>
-                            <%= image_tag activity.resize_attached_image %>
-                        <% end %>
-                        <%= activity.title %>
-                        <%= activity.prompt %>: <%= activity.prompt_answer %>
-                        <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.
-                    </li>
-                <% end %>
-            </ul>
+            <div class="mb-6 bg-white rounded-md">
+                <%= render "activities/index", guide: guide %>
+            </div>
         <% end %>
     </div>
     <div class="p-6 bg-white rounded-md">

@@ -1,13 +1,32 @@
 <% if guide.activities.length > 0 %>
-    <ul>
-        <% guide.activities.each do |activity| %>
+    <ul class="flex flex-col gap-6">
+        <% guide.activities.each_with_index do |activity, index| %>
             <li>
-                <% if activity.image.attached? %>
-                    <%= image_tag activity.resize_attached_image %>
-                <% end %>
-                <%= activity.title %>
-                <%= activity.prompt %>: <%= activity.prompt_answer %>
-                <%= activity.minutes_to_complete / 60 %> hr. <%= activity.minutes_to_complete % 60 %> min.
+                <p class="flex items-center justify-center w-10 h-10 text-xl font-semibold bg-white border-2 rounded-full font-headline border-violet-primary">
+                    <%= index + 1 %>
+                </p>
+                <div class="max-w-lg p-4 rounded">
+                    <%# Activity Image %>
+                    <% if activity.image.attached? %>
+                        <%= image_tag activity.resize_attached_image %>
+                    <% end %>
+                    <%# Title and Time %>
+                    <div class="w-64 pb-2 mb-2 border-b border-dashed border-form-secondary">
+                        <p class="text-xl font-semibold font-headline">
+                            <%= activity.title %>
+                        </p>
+                        <p class="text-sm">
+                            <%= activity.minutes_to_complete / 60 %> hr <%= activity.minutes_to_complete % 60 %> min
+                        </p>
+                    </div>
+                    <%# Prompt and Prompt Answer %>
+                    <p class="mb-1 text-sm font-bold">
+                        <%= activity.prompt %>
+                    </p>
+                    <p class="w-64 text-sm italic">
+                        <%= activity.prompt_answer %>
+                    </p>
+                </div>
             </li>
         <% end %>
     </ul>
