@@ -6,6 +6,8 @@ class UsersController < ApplicationController
         user.update(user_params)
         if user.save
             redirect_to user
+        else
+            redirect_to edit_profile_user_path, status: :unproccessable_entity
         end
     end
 
