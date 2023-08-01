@@ -6,7 +6,7 @@
   <% if current_page?(new_guide_path || guide_path || add_tags_guide_path) %>
     <% create_styles = "h-14 fill-violet-primary" %>
   <% end %>
-  <% if params[:controller] == "guides" %>
+  <% if params[:controller] == "guides" && !current_page?(new_guide_path) %>
     <% explore_styles = "h-10 fill-violet-primary" %>
   <% end %>
   <% if params[:controller] == "users" %>
