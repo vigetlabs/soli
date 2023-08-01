@@ -1,5 +1,11 @@
 <% content_for :body_class, 'bg-violet-dark-hover' %>
-
+<% puts "hellooo" %>
+<% puts alert %>
+<% if alert %>
+        <%= alert.each do |error| %>
+            <%= error %>
+        <% end %>
+    <% end %>
 <div class="container flex flex-col items-center px-5 mt-20">
     <%# Buttons to cancel or finish creating the guide %>
     <%# TODO: Cancel button should open a confirmation modal %>

@@ -7,10 +7,10 @@ class ActivitiesController < ApplicationController
         if @activity.save
             redirect_to @guide
         else
+            puts "Hello"
             puts @activity.errors.full_messages
-            # binding.irb
             @errors = @activity.errors.full_messages
-            redirect_to guide_path(@guide), status: :unprocessable_entity
+            redirect_to guide_path(@guide), alert: @errors
         end
         @activity.update!({ minutes_to_complete: @activity.minutes_to_complete + activity_params[:hours_to_complete].to_i * 60 })
     end
