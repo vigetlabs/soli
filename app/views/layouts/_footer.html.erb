@@ -6,10 +6,10 @@
   <% if current_page?(new_guide_path || guide_path || add_tags_guide_path) %>
     <% create_styles = "h-14 fill-violet-primary" %>
   <% end %>
-  <% if current_page?(guides_path) %>
+  <% if params[:controller] == "guides" %>
     <% explore_styles = "h-10 fill-violet-primary" %>
   <% end %>
-  <% if current_page?(user_path(current_user)) %>
+  <% if params[:controller] == "users" %>
     <% profile_styles = "h-10 fill-violet-primary" %>
   <% end %>
   <%# Navbar Element %>
