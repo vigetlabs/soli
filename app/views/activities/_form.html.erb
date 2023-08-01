@@ -1,4 +1,7 @@
 <%= form_with model: [ guide, guide.activities.build ] do |form| %>
+    <p class="flex items-center justify-center w-10 h-10 text-xl font-semibold bg-white border-2 rounded-full font-headline border-violet-primary">
+        <%= guide.activities.length %>
+    </p>
     <div class="flex flex-col">
         <%# Activity Title Field %>
         <%= form.label "Activity Name", class: "font-bold" %>
@@ -16,12 +19,13 @@
         <div class="flex flex-row items-center">
             <div class="flex flex-col">
                 <%= form.label :hours_to_complete, class: "hidden" %>
-                <%= form.number_field :hours_to_complete, max: 23, min:0, value: 0, class: "px-4 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
+                <%= form.select :hours_to_complete, options_for_select((0..23).to_a), {}, class: "px-8 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
             </div>
             <p class="pl-2 pr-4"> hr </p>
             <div class="flex flex-col">
                 <%= form.label :minutes_to_complete, class: "hidden" %>
-                <%= form.number_field :minutes_to_complete, step: 15, max: 45, min: 0, value: 0, class: "px-4 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
+                <%= form.select :minutes_to_complete, options_for_select((0..45).step(15).to_a), {}, class: "px-8 py-3 max-w-sm border border-form-primary rounded focus:border-violet-active focus:ring-0" %>
+
             </div>
             <p class="pl-2"> min </p>
         </div> 
