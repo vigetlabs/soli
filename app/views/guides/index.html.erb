@@ -9,7 +9,7 @@
                 <%= text_field_tag :city_query, @city, placeholder: "Search for a city...", class: "form-control text-input", "data-discover-search-target":"city" %>
                 <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys, @duration), class:"text-input w-32", "data-action":"discover-search#submitForm", "data-discover-search-target":"duration" %>
             </div>
-            <div class="flex flex-wrap items-center justify-center gap-1">
+            <div class="flex flex-wrap items-center justify-center gap-2">
                 <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
                     <% checkbox_id = "tag_checkbox_#{tag_id}" %>
                     <% checkbox_class="checkbox-#{tag_name.downcase}" %>
