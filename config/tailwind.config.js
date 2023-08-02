@@ -30,6 +30,11 @@ module.exports = {
       black: '#000000',
       alert: '#E73943',
       form: {
+        light: {
+          primary: '#E6E8EA',
+          hover: '#D9DCE0',
+          active: '#B1B7BF'
+        },
         primary: '#031830',
         secondary: '#97A0AC'
       },

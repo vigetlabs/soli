@@ -6,31 +6,38 @@
     <div class="h-[139px] w-screen bg-[url('light_banner.png')]"></div>
 <% end %>
 
-<div class="px-5 mt-5">
-    <div class="flex flex-col text-center">
-        <div class="flex-1 font-headline text-xl font-bold mb-2"><%= user.username %></div>
+<div class="px-5 mt-5" data-controller="profile-tabs">
+    <div class="flex flex-col mb-5 text-center">
+        <div class="flex-1 mb-2 text-xl font-bold font-headline"><%= user.username %></div>
         <p class="flex-1 text-sm"><%= user.bio %></p>
     </div>
 
-    <p>Posted Guides [<%= user.guides.length %>]</p>
+    <div class="flex items-center justify-center w-screen gap-1 border-b">
+        <button data-profile-tabs-target="createdButton" data-action="profile-tabs#switchToCreated" class="px-6 py-1 font-bold border -mb-[1px] rounded-t-md border-b-white">
+            Created Guides
+        </button>
+        <button data-profile-tabs-target="favoritedButton" data-action="profile-tabs#switchToFavorited" class="px-6 py-1 border -mb-[1px] rounded-t-md bg-form-light-primary">
+            Favorited Guides
+        </button>
+    </div>
 
-    <ul>
-        <% user.guides.reverse_order.each do |guide| %>
-            <li>
-                <%= render "guides/guide_desc", guide: guide %>
-                <%= link_to "Show More", detail_guide_path(guide) %>
-            </li>
-        <% end %>
-    </ul>
+    <div data-profile-tabs-target="created" class="flex justify-center"> 
+        <ul>
+            <% user.guides.reverse_order.each do |guide| %>
+                <li>
+                    <%= render "guides/guide_desc", guide: guide %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 
-    <p>Favorited Guides [<%= user.favorited_guides.count %>]</p>
-
-    <ul>
-        <% user.favorited_guides.reverse_order.each do |favorited| %>
-            <li>
-                <%= render "guides/guide_desc", guide: favorited.guide %>
-                <%= link_to "Show More", detail_guide_path(favorited.guide) %>
-            </li>
-        <% end %>
-    </ul>
+    <div data-profile-tabs-target="favorited" class="flex justify-center hidden">
+        <ul>
+            <% user.favorited_guides.reverse_order.each do |favorited| %>
+                <li>
+                    <%= render "guides/guide_desc", guide: favorited.guide %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </div>
