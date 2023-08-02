@@ -16,11 +16,12 @@ module.exports = {
     'peer-checked/2:bg-violet-primary',
     'peer-checked/3:bg-violet-light-active',
     'peer-checked/4:bg-golden-light-active',
-    'peer-checked/5:bg-limon-active',
-    'peer-checked/6:bg-limon-primary',
-    'peer-checked/7:bg-periwinkle-light-active',
-    'peer-checked/8:bg-periwinkle-light-hover',
-    'peer-checked/9:bg-form-secondary'
+    'peer-checked/5:bg-limon-hover',
+    'peer-checked/6:bg-periwinkle-light-hover',
+    'peer-checked/7:bg-limon-primary',
+    'peer-checked/8:bg-periwinkle-light-active',
+    'peer-checked/9:bg-form-light-primary',
+    'peer-checked/10:bg-periwinkle-primary'
   ],
   theme: {
     colors: {
@@ -60,7 +61,7 @@ module.exports = {
           hover: '#E6ECFE',
           active: '#CCD8FC'
         },
-        primary: '#5B81F6',
+        primary: '#6B8EFC',
         hover: '#5274DD',
         active: '#4967C5',
         dark: {

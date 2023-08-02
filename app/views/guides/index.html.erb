@@ -1,30 +1,38 @@
-<div class="container flex flex-col items-center px-5 mt-20">
+<div class="container flex flex-col items-center mt-20">
     <div class="flex flex-col items-center gap-1 mb-5">
         <%= render partial: "shared/icon", locals: { icon_name: "logo", class_names: "" } %>
         <h2 class="text-lg italic font-light">How will you explore today?</h2>
     </div>
-    <div id="header" class="container flex flex-col mb-8 w-72" data-controller="discover-search">
+    <div id="header" class="container flex flex-col items-center max-w-xl px-5 mb-8" data-controller="discover-search">
         <%= form_tag(guides_path, method: "get") do %>
-            <div class="flex max-w-md gap-1 mb-1">
-                <%= text_field_tag :city_query, @city, placeholder: "Search for a city...", class: "form-control text-input w-44" %>
-                <%= submit_tag "", style: "display: none;" %>
-                <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys, @duration), class:"text-input w-32", "data-action":"discover-search#submitForm" %>
-                <%= submit_tag "", style: "display: none;" %>
+            <div class="flex justify-center gap-1 mb-1">
+                <%= text_field_tag :city_query, @city, placeholder: "Search for a city...", class: "form-control text-input", "data-discover-search-target":"city" %>
+                <%= select_tag :duration_option, options_for_select(Guide::DURATIONS.keys, @duration), class:"text-input w-32", "data-action":"discover-search#submitForm", "data-discover-search-target":"duration" %>
             </div>
-            
-            <div class="flex flex-wrap items-center justify-center gap-2 w-80">
+            <div class="flex flex-wrap items-center justify-center gap-2">
                 <% Guide::TAG_OPTIONS.each do |tag_name, tag_id| %>
                     <% checkbox_id = "tag_checkbox_#{tag_id}" %>
                     <% checkbox_class="checkbox-#{tag_name.downcase}" %>
                     <% label_class="tag-#{tag_name.downcase}" %>
-                    <%= check_box_tag "tag_queries[]", tag_id, @tags && @tags.include?(tag_id.to_s), id: checkbox_id, class: Guide::TAG_IDS[tag_id], "data-action":"discover-search#submitForm" %>
-                    <%= label_tag checkbox_id, tag_name, class: Guide::TAG_COLORS[tag_id] %>
+                    <%= check_box_tag "tag_queries[]", tag_id, @tags && @tags.include?(tag_id.to_s), id: checkbox_id, class: Guide::TAG_IDS[tag_id], "data-action":"discover-search#submitForm", "data-discover-search-target":"tag" %>
+                    <%= label_tag checkbox_id, tag_name, class: Guide::TAG_COLORS[tag_id] do %>
+                        <div class="flex items-center gap-1">
+                            <%= render partial: "shared/icon", locals: { icon_name: "tag-" + tag_name.downcase.to_s, class_names: "h-4" } %>
+                            <%= tag_name %>
+                        </div>
+                    <% end %>
                 <% end %>
             <%= submit_tag "", style: "display: none;", "data-discover-search-target": "submit" %>
+            <%= link_to "Clear Search", guides_path, class: "hidden text-form-secondary mt-1 px-4 py-2 text-sm rounded border border-form-light-primary", "data-discover-search-target":"clear" %>
             </div>
         <% end %>
     </div>
     <ul class="flex flex-col gap-6">
+        <% if @guides.includes(:author).empty? %>
+            <p class="text-center text-form-secondary">
+                Hmm, no guides matched your search.
+            </p>
+        <% end %>
         <% @guides.includes(:author).each do |guide| %>
             <li>
                 <%= render 'guide_desc', guide: guide %>

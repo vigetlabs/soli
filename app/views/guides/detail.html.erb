@@ -1,11 +1,11 @@
-<div class="absolute top-5 left-5 flex">
+<div class="absolute flex top-5 left-5">
     <div class="self-center">
         <%= render partial: "shared/icon", locals: { icon_name: "back", class_names: "fill-violet-active" } %>
     </div>
     <%= link_to "Back", :back, class: "text-sm text-violet-active font-bold ml-2" %>
 </div>
 
-<div class="px-5 mt-10">
+<div class="mt-10">
   <% if current_user == guide.author %>
     <div class="flex justify-end mb-1">
       <%= link_to guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure that you want to delete this guide?' } do %>
@@ -16,7 +16,7 @@
   <div class="container flex flex-col items-center">
     <%= render "guide_desc", guide: guide %>
     <% if guide.activities.length > 0 %>
-      <div class="p-6 rounded-md bg-violet-light-primary">
+      <div class="flex items-center justify-center w-screen p-6 rounded-md bg-violet-light-primary sm:w-auto">
         <%= render "activities/index", guide: guide %>
       </div>
     <% else %>
