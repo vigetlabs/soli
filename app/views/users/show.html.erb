@@ -12,14 +12,16 @@
         <p class="flex-1 text-sm"><%= user.bio %></p>
     </div>
 
-    <div class="flex items-center justify-center w-screen gap-1 border-b">
-        <button data-profile-tabs-target="createdButton" data-action="profile-tabs#switchToCreated" class="px-4 py-1 font-bold border -mb-[1px] rounded-t-md border-b-white">
-            Created Guides
-        </button>
-        <button data-profile-tabs-target="favoritedButton" data-action="profile-tabs#switchToFavorited" class="px-4 py-1 border -mb-[1px] rounded-t-md bg-form-light-primary">
-            Favorited Guides
-        </button>
-    </div>
+    <% if current_user == user %>
+        <div class="flex items-center justify-center w-screen gap-1 border-b">
+            <button data-profile-tabs-target="createdButton" data-action="profile-tabs#switchToCreated" class="px-4 py-1 font-bold border -mb-[1px] rounded-t-md border-b-white">
+                Created Guides
+            </button>
+            <button data-profile-tabs-target="favoritedButton" data-action="profile-tabs#switchToFavorited" class="px-4 py-1 border -mb-[1px] rounded-t-md bg-form-light-primary">
+                Favorited Guides
+            </button>
+        </div>
+    <% end %>
 
     <div data-profile-tabs-target="created" class="flex justify-center"> 
         <ul>
