@@ -28,6 +28,11 @@
         <% end %>
     </div>
     <ul class="flex flex-col gap-6">
+        <% if @guides.includes(:author).empty? %>
+            <p class="text-center text-form-secondary">
+                Hmm, no guides matched your search.
+            </p>
+        <% end %>
         <% @guides.includes(:author).each do |guide| %>
             <li>
                 <%= render 'guide_desc', guide: guide %>
