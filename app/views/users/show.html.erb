@@ -6,17 +6,17 @@
     <div class="h-[139px] w-screen bg-[url('light_banner.png')]"></div>
 <% end %>
 
-<div class="px-5 mt-5" data-controller="profile-tabs">
+<div class="mt-5" data-controller="profile-tabs">
     <div class="flex flex-col mb-5 text-center">
         <div class="flex-1 mb-2 text-xl font-bold font-headline"><%= user.username %></div>
         <p class="flex-1 text-sm"><%= user.bio %></p>
     </div>
 
     <div class="flex items-center justify-center w-screen gap-1 border-b">
-        <button data-profile-tabs-target="createdButton" data-action="profile-tabs#switchToCreated" class="px-6 py-1 font-bold border -mb-[1px] rounded-t-md border-b-white">
+        <button data-profile-tabs-target="createdButton" data-action="profile-tabs#switchToCreated" class="px-4 py-1 font-bold border -mb-[1px] rounded-t-md border-b-white">
             Created Guides
         </button>
-        <button data-profile-tabs-target="favoritedButton" data-action="profile-tabs#switchToFavorited" class="px-6 py-1 border -mb-[1px] rounded-t-md bg-form-light-primary">
+        <button data-profile-tabs-target="favoritedButton" data-action="profile-tabs#switchToFavorited" class="px-4 py-1 border -mb-[1px] rounded-t-md bg-form-light-primary">
             Favorited Guides
         </button>
     </div>
