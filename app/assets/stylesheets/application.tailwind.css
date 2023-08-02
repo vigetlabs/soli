@@ -7,4 +7,8 @@
   .text-input {
     @apply max-w-sm px-4 py-3 my-1 border rounded placeholder-form-secondary border-form-primary focus:border-violet-active focus:ring-0;
   }
+
+  .tag-icon {
+    @apply flex justify-center w-8 px-2 py-1 text-center rounded-full;
+  }
 }

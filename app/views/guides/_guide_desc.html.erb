@@ -57,58 +57,58 @@
             <%= guide.activities.length %> <%= guide.activities.length == 1 ? "Activity" : "Activities" %>
         </div>
         <%# Tags %>
-        <div class="flex gap-1">
+        <div class="flex gap-2">
             <% guide.tags.each do |tag| %>
                 <% if tag == "" %>
                     <% next %>
                 <%# Eat %>
                 <% elsif tag == "1" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-golden-primary">
+                    <div class="tag-icon bg-golden-primary">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-food", class_names: "h-4" } %>
                     </div>
                 <%# Entertainment %>
                 <% elsif tag == "2" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-violet-primary">
+                    <div class="tag-icon bg-violet-primary">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-entertainment", class_names: "h-4" } %>
                     </div>
                 <%# Relax %>
                 <% elsif tag == "3" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-violet-light-active">
+                    <div class="tag-icon bg-violet-light-active">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-relax", class_names: "h-4" } %>
                     </div>
                 <%# Shop %>
                 <% elsif tag == "4" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-golden-light-active">
+                    <div class="tag-icon bg-golden-light-active">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-shop", class_names: "h-4" } %>
                     </div>
                 <%# Educational %>
                 <% elsif tag == "5" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-limon-hover">
+                    <div class="tag-icon bg-limon-hover">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-educational", class_names: "h-4" } %>
                     </div>
                 <%# Arts %>
                 <% elsif tag == "6" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-periwinkle-light-hover">
+                    <div class="tag-icon bg-periwinkle-light-hover">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-arts", class_names: "h-4" } %>
                     </div>
                 <%# Fitness %>
                 <% elsif tag == "7" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-limon-primary">
+                    <div class="tag-icon bg-limon-primary">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-fitness", class_names: "h-4" } %>
                     </div>
                 <%# Outdoor %>
                 <% elsif tag == "8" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-periwinkle-light-active">
+                    <div class="tag-icon bg-periwinkle-light-active">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-outdoor", class_names: "h-4" } %>
                     </div>
                 <%# Low-Cost %>
                 <% elsif tag == "9" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-form-light-primary">
+                    <div class="tag-icon bg-form-light-primary">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-low-cost", class_names: "h-4" } %>
                     </div>
                 <%# Nightlife %>
                 <% elsif tag == "10" %>
-                    <div class="flex justify-center w-8 px-2 py-1 text-center rounded-full bg-periwinkle-primary">
+                    <div class="tag-icon bg-periwinkle-primary">
                         <%= render partial: "shared/icon", locals: { icon_name: "tag-nightlife", class_names: "h-4" } %>
                     </div>
                 <% end %>
