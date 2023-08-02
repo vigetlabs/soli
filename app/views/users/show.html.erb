@@ -3,7 +3,14 @@
         <%= render "settings" %>
     </div>
 <% else %>
-    <div class="h-[139px] w-screen bg-[url('light_banner.png')]"></div>
+    <div class="h-[139px] w-screen bg-[url('light_banner.png')]">
+        <div class="absolute top-5 left-5 flex">
+            <div class="self-center">
+                <%= render partial: "shared/icon", locals: { icon_name: "back", class_names: "fill-violet-dark-active" } %>
+            </div>
+            <%= link_to "Back", :back, class: "text-sm text-violet-dark-active font-bold ml-2" %>
+        </div>
+    </div>
 <% end %>
 
 <div class="mt-5" data-controller="profile-tabs">
