@@ -19,7 +19,7 @@
             <% end %>
         </div>
         <div class="pt-6 space-x-12 text-center">
-            <%= link_to "X Cancel", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure that you want to delete this guide?' }, class: "text-form-primary my-2 mt-6 px-4 py-2 font-bold rounded border border-alert" %>
+            <%= link_to "X Cancel", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure that you want to quit? Your in-progress guide will be deleted.' }, class: "text-form-primary my-2 mt-6 px-4 py-2 font-bold rounded border border-alert" %>
             <%= form.submit "Post →", class: "my-2 mt-6 px-4 py-2 text-form-primary rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active font-bold pb-2" %>
         </div>
     <% end %>
