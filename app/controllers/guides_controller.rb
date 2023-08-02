@@ -2,7 +2,7 @@ class GuidesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        if Guide.search_by_city(params[:city_query]).length > 0
+        if params[:city_query] && params[:city_query].length > 0
             @guides = Guide.search_by_city(params[:city_query])
         else
             @guides = Guide.order('created_at DESC')
