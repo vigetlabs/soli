@@ -25,6 +25,14 @@
 
   <body class="<%= yield(:body_class) || '' %>">
     <main class="flex flex-col items-center mb-20">
+      <% flash.each do |type, msg| %>
+          <div class="flash-container">
+              <div class=<%=type == "alert" ? "alert" : "notice"%>>
+                  <%= msg %>
+              </div>
+          </div>
+      <% end %>
+
       <%= yield %>
       <%= render "layouts/footer" %>
     </main>
