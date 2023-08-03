@@ -27,16 +27,17 @@
             </div>
         <% end %>
     </div>
-    <ul class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <% if @guides.includes(:author).empty? %>
-            <p class="text-center text-form-secondary">
-                Hmm, no guides matched your search.
-            </p>
-        <% end %>
-        <% @guides.includes(:author).each do |guide| %>
-            <li>
-                <%= render 'guide_desc', guide: guide %>
-            </li>
-        <% end %>
-    </ul>
+    <% if @guides.includes(:author).empty? %>
+        <p class="text-center text-form-secondary">
+            Hmm, no guides matched your search.
+        </p>
+    <% else %>
+        <ul class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <% @guides.includes(:author).each do |guide| %>
+                <li>
+                    <%= render 'guide_desc', guide: guide %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
 </div>
