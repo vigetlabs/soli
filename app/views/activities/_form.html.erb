@@ -8,7 +8,7 @@
         <%= form.text_field :title, class: "text-input", placeholder: "Title this part of your day" %>
         <%# Activity Image Upload %>
         <div class="mb-4" data-controller="image-preview">
-            <%= form.label :image %>
+            <%= form.label :image, "Photo", class: "font-bold" %>
             <%= form.file_field :image, "data-image-preview-target": "uploadButton", class: "text-transparent block text-sm border border-form-primary rounded w-72 h-72", "data-action":"image-preview#setImgSrcValue" %>
         </div>
         <%# Location Field %>
@@ -37,6 +37,6 @@
         <%= form.text_area :prompt_answer, class: "max-w-sm px-4 py-3 border rounded-b placeholder-form-secondary border-form-secondary focus:border-violet-active focus:ring-0" %>
     </div>
     <div class="text-center">
-        <%= form.submit "+ Add Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-black border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
+        <%= form.submit "Submit Activity", class: "px-4 py-2 my-2 mt-6 font-bold text-black border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
     </div>
 <% end %>

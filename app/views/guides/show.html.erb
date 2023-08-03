@@ -2,17 +2,15 @@
 
 <div class="container flex flex-col items-center px-5 mt-20">
     <%# Buttons to cancel or finish creating the guide %>
-    <%# TODO: Cancel button should open a confirmation modal %>
     <div class="flex flex-row pb-8 space-x-40">
         <%= link_to "X Cancel", guide_path(guide), data: { turbo_method: :delete, turbo_confirm: 'Are you sure that you want to quit? Your in-progress guide will be deleted.' }, class: "text-white underline py-2 font-bold" %>
         <%= link_to "Done ✓", add_tags_guide_path(guide), class: "px-4 py-2 font-bold text-form-primary border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
     </div>
-    <div id="title" class="container flex flex-col w-72">
+    <div id="title" class="container flex flex-col w-80">
         <h1 class="py-1 text-3xl text-white font-headline">Add Activities</h1>
         <% if guide.activities.length == 0 %>
             <p class="py-1 mb-5 italic text-white text-md font-headline">Complete at least one activity</p>
         <% end %>
-        <%# TODO: Adjust styling of current activities list based on feedback from designers %>
         <% if guide.activities.length > 0 %>
             <p class="py-1 italic text-white text-md font-headline">Current activities:</p>
             <div class="mb-6 bg-white rounded-md">

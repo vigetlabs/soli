@@ -14,7 +14,7 @@
             <%= form.label "City Name", class: "font-bold" %>
             <%= form.text_field :city, class: "text-input", placeholder: "e.g. New York, NY" %>
             <%# Cover photo upload %>
-            <%= form.label :image %>
+            <%= form.label :image, "Photo", class: "font-bold" %>
             <%= form.file_field :image, "data-image-preview-target": "uploadButton", class: "text-transparent block text-sm border border-form-primary rounded w-72 h-72", "data-action":"image-preview#setImgSrcValue" %>
         </div>
         <div class="flex items-center justify-end">

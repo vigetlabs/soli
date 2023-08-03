@@ -21,10 +21,42 @@ input[type='file']::file-selector-button {
   cursor: pointer;
   border: none;
   background-image: inherit;
-  color: #97a0ac;
+  color: transparent;
   font-size: 1rem;
   background-color: white;
   object-fit: cover;
   background-size: cover;
   background-position: center;
+}
+
+input[type='file']::before {
+  position: absolute;
+  pointer-events: none;
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='46' viewBox='0 0 60 46' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3Cpath d='M2 33.7188L16.8156 18.9726C17.4156 18.3754 18.1279 17.9017 18.9119 17.5785C19.6958 17.2553 20.5361 17.0889 21.3846 17.0889C22.2332 17.0889 23.0734 17.2553 23.8574 17.5785C24.6413 17.9017 25.3536 18.3754 25.9536 18.9726L40.7692 33.7188M36.4615 29.4312L40.5079 25.4039C41.1079 24.8067 41.8202 24.3329 42.6042 24.0097C43.3881 23.6865 44.2284 23.5202 45.0769 23.5202C45.9255 23.5202 46.7657 23.6865 47.5497 24.0097C48.3336 24.3329 49.0459 24.8067 49.646 25.4039L58 33.7188M6.30769 44.4375H53.6923C54.8348 44.4375 55.9305 43.9858 56.7383 43.1817C57.5462 42.3777 58 41.2871 58 40.15V5.85C58 4.71288 57.5462 3.62234 56.7383 2.81828C55.9305 2.01422 54.8348 1.5625 53.6923 1.5625H6.30769C5.16522 1.5625 4.06954 2.01422 3.26169 2.81828C2.45385 3.62234 2 4.71288 2 5.85V40.15C2 41.2871 2.45385 42.3777 3.26169 43.1817C4.06954 43.9858 5.16522 44.4375 6.30769 44.4375ZM36.4615 12.2812H36.4845V12.3041H36.4615V12.2812ZM37.5385 12.2812C37.5385 12.5655 37.425 12.8382 37.223 13.0392C37.0211 13.2402 36.7472 13.3531 36.4615 13.3531C36.1759 13.3531 35.902 13.2402 35.7 13.0392C35.4981 12.8382 35.3846 12.5655 35.3846 12.2812C35.3846 11.997 35.4981 11.7243 35.7 11.5233C35.902 11.3223 36.1759 11.2094 36.4615 11.2094C36.7472 11.2094 37.0211 11.3223 37.223 11.5233C37.425 11.7243 37.5385 11.997 37.5385 12.2812Z' stroke='%236E349A' stroke-width='2.96154' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E ");
+  height: 46px;
+  width: 60px;
+  margin: auto;
+  inset: 0;
+  transform: translateY(-32px);
+}
+
+input[type='file'] {
+  position: relative;
+}
+
+input[type='file']::after {
+  position: absolute;
+  pointer-events: none;
+  content: 'Add a photo';
+  inset: 0;
+  margin: auto;
+  color: black;
+  text-align: center;
+  transform: translateY(calc(50% + 5px));
+}
+
+input[type='file'][data-controls='hidden']::before,
+input[type='file'][data-controls='hidden']::after {
+  content: none;
 }
