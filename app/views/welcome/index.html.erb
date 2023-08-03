@@ -1,6 +1,7 @@
 <% content_for :body_class, 'bg-violet-light-primary' %>
 
 <div class="flex flex-col items-center justify-center px-5 mt-20">
+  <%= render partial: "shared/icon", locals: { icon_name: "logo-icon", class_names: "-mb-12 -mr-40" } %>
   <h1 class="w-56 text-5xl font-bold font-headline">explore</h1>
   <h1 class="w-56 mb-2 text-5xl font-bold font-headline whitespace-nowrap">solo today</h1>
   <h2 class="w-56 mb-8 text-lg italic font-light text-violet-dark-primary">The world is your oyster</h2>
