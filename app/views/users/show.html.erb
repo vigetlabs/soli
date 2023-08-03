@@ -4,7 +4,7 @@
     </div>
 <% else %>
     <div class="h-[139px] w-screen bg-[url('light_banner.png')]">
-        <div class="absolute top-5 left-5 flex">
+        <div class="absolute flex top-5 left-5">
             <div class="self-center">
                 <%= render partial: "shared/icon", locals: { icon_name: "back", class_names: "fill-violet-dark-active" } %>
             </div>
@@ -33,7 +33,18 @@
     <% end %>
 
 
-    <div data-profile-tabs-target="created" class="flex justify-center"> 
+    <div data-profile-tabs-target="created" class="flex justify-center">
+        <% if user.guides.empty? %>
+            <% if current_user == user %>
+                <p class="mt-10 text-center w-72 text-form-secondary">
+                    You haven't created any guides... yet! Tap the "Create" button to get started!
+                </p>
+            <% else %>
+                <p class="mt-10 text-center text-form-secondary">
+                    <%= user.username %> hasn't created any guides... yet!
+                </p>
+            <% end %>
+        <% end %>
         <ul>
             <% user.guides.reverse_order.each do |guide| %>
                 <li>
@@ -44,6 +55,17 @@
     </div>
 
     <div data-profile-tabs-target="favorited" class="flex justify-center hidden">
+        <% if user.favorited_guides.empty? %>
+            <% if current_user == user %>
+                <p class="mt-10 text-center w-72 text-form-secondary">
+                    To save a guide for later, tap the purple bookmark icon next to the guide's title.
+                </p>
+            <% else %>
+                <p class="mt-10 text-center text-form-secondary">
+                    <%= user.username %> hasn't favorited any guides.
+                </p>
+            <% end %>
+        <% end %>
         <ul>
             <% user.favorited_guides.reverse_order.each do |favorited| %>
                 <li>
