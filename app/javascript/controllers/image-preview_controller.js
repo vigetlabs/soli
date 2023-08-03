@@ -12,7 +12,6 @@ export default class extends Controller {
   }
 
   setImgSrcValue(event) {
-    console.log('setting imgSrc value...')
     const imageFiles = event.target.files
     if (imageFiles.length > 0) {
       // set the imgSrc value to the URL of the image file
@@ -23,6 +22,7 @@ export default class extends Controller {
       // change background-image of upload button
       imageUploadButton.style.backgroundImage = `url(${this.imgSrcValue})`
       imageUploadButton.style.color = `transparent`
+      imageUploadButton.dataset.controls = 'hidden'
     }
   }
 }
