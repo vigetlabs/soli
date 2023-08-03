@@ -27,7 +27,7 @@
             </div>
         <% end %>
     </div>
-    <ul class="flex flex-col items-center gap-6">
+    <ul class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <% if @guides.includes(:author).empty? %>
             <p class="text-center text-form-secondary">
                 Hmm, no guides matched your search.
