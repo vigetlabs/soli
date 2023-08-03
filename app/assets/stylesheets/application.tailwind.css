@@ -11,4 +11,16 @@
   .tag-icon {
     @apply flex justify-center w-8 px-2 py-1 text-center rounded-full;
   }
+
+  .flash-container {
+    @apply absolute mt-5 w-3/4 justify-center items-center
+  }
+
+  .alert {
+    @apply flex-1 p-2 m-auto rounded align-middle justify-center text-center self-center text-[#031830] bg-[#FDD7D9] border-2 border-[#E73943]
+  }
+
+  .notice {
+    @apply flex-1 p-2 m-auto rounded align-middle justify-center text-center self-center text-[#031830] bg-[#F0FAE9] border-2 border-[#8BC169]
+  }
 }

@@ -1,5 +1,13 @@
 <% content_for :body_class, 'bg-violet-dark-hover' %>
 
+<% flash.each do |type, msg| %>
+    <div class="flash-container">
+        <div class="alert">
+            <%= msg %>
+        </div>
+    </div>
+<% end %>
+
 <div class="container flex flex-col items-center px-5 mt-20">
     <%# Buttons to cancel or finish creating the guide %>
     <div class="flex flex-row pb-8 space-x-40">
