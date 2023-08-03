@@ -4,8 +4,13 @@ class ActivitiesController < ApplicationController
     def create 
         @guide = Guide.find(params[:guide_id])
         @activity = @guide.activities.create(activity_params.except(:hours_to_complete))
-        @activity.update!({ minutes_to_complete: @activity.minutes_to_complete + activity_params[:hours_to_complete].to_i * 60 })
-        redirect_to @guide
+        if @activity.save
+            @activity.update!({ minutes_to_complete: @activity.minutes_to_complete + activity_params[:hours_to_complete].to_i * 60 })
+            redirect_to @guide
+        else
+            flash[:alert] = "Fill out the remaining fields first!"
+            redirect_to @guide
+        end
     end
 
     private

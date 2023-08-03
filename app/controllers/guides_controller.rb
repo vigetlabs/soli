@@ -25,7 +25,8 @@ class GuidesController < ApplicationController
         if @guide.save
             redirect_to @guide
         else
-            render 'new', status: :unprocessable_entity
+            flash[:alert] = "Fill out the remaining fields first!"
+            redirect_to new_guide_path
         end
     end
 
@@ -38,9 +39,11 @@ class GuidesController < ApplicationController
     def update
         @guide = current_user.guides.find(params[:id])
         if guide.update(guide_params)
+            flash[:notice] = "Guide posted!"
             redirect_to root_path
         else
-            render 'add_tags', status: :unprocessable_entity
+            flash[:alert] = "Invalid number of tags"
+            redirect_to add_tags_guide_path
         end
     end
 
