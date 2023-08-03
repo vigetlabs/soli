@@ -10,14 +10,21 @@
                     <% if activity.image.attached? %>
                         <%= image_tag activity.image, class: "rounded w-72 h-72 object-cover mb-2" %>
                     <% end %>
-                    <%# Title and Time %>
-                    <div class="w-64 pb-2 mb-2 border-b border-dashed border-form-secondary">
-                        <p class="text-xl font-semibold font-headline">
-                            <%= activity.title %>
-                        </p>
-                        <p class="text-sm">
-                            <%= activity.minutes_to_complete / 60 %> hr <%= activity.minutes_to_complete % 60 %> min
-                        </p>
+                    <div class="flex">
+                        <%# Title and Time %>
+                        <div class="w-64 pb-2 mb-2 border-b border-dashed border-form-secondary">
+                            <p class="text-xl font-semibold font-headline">
+                                <%= activity.title %>
+                            </p>
+                            <p class="text-sm">
+                                <%= activity.minutes_to_complete / 60 %> hr <%= activity.minutes_to_complete % 60 %> min
+                            </p>
+                        </div>
+                        <%# Location Link %>
+                        <div class="flex">
+                            <a href='https://www.google.com/maps/search/?api=1&query=<%= activity.location.split(" ").join("+") %>' class="flex mt-1 text-sm align-top text-periwinkle-active">Map</a>
+                            <%# <%= render partial: "shared/icon", locals: { icon_name: "location", class_names: "" } %>
+                        </div>
                     </div>
                     <%# Prompt and Prompt Answer %>
                     <p class="mb-1 text-sm font-bold">
