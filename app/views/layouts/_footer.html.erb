@@ -14,7 +14,7 @@
   <% end %>
   <%# Navbar Element %>
   <% if hide_navbar %>
-    <div class="fixed bottom-0 flex items-center self-center justify-center w-full h-20 gap-12 px-10 py-2 text-center bg-white sm:w-auto rounded-t-md drop-shadow-lg">
+    <div class="fixed bottom-0 z-10 flex items-center self-center justify-center w-full h-20 gap-12 px-10 py-2 text-center bg-white sm:w-auto rounded-t-md drop-shadow-lg">
       <%= link_to root_path, class:"flex flex-col items-center" do %>
         <%= render partial: "shared/icon", locals: { icon_name: "nav-explore", class_names: explore_styles } %>
         <p class="text-sm">Explore</p>
