@@ -50,7 +50,7 @@
         <%= guide.created_at.to_date %>
     </div>
     <%# Tags (Expanded) %>
-    <div class="flex gap-1 mt-2 -ml-4">
+    <div class="flex gap-1 mt-2">
         <% guide.tags.each do |tag| %>
             <% if tag == "" %>
                 <% next %>
