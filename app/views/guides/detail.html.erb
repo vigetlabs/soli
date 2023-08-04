@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <div class="container flex flex-col items-center">
-    <%= render "guide_desc", guide: guide %>
+    <%= render "guide_header", guide: guide %>
     <% if guide.activities.length > 0 %>
       <div class="flex items-center justify-center w-screen p-6 rounded-md bg-violet-light-primary sm:w-auto">
         <%= render "activities/index", guide: guide %>
