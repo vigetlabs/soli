@@ -1,10 +1,15 @@
 <% content_for :body_class, 'bg-violet-light-primary' %>
 
-<div class="flex flex-col items-center justify-center px-5 mt-20">
-  <%= render partial: "shared/icon", locals: { icon_name: "logo-icon", class_names: "-mb-12 -mr-40" } %>
-  <h1 class="w-56 text-5xl font-bold font-headline">explore</h1>
-  <h1 class="w-56 mb-2 text-5xl font-bold font-headline whitespace-nowrap">solo today</h1>
-  <h2 class="w-56 mb-8 text-lg italic font-light text-violet-dark-primary">The world is your oyster</h2>
+<div class="relative flex flex-col items-center justify-center px-5 mt-20" data-controller="welcome">
+  <div class="absolute top-0 flex flex-col items-center heading-svgs">
+    <%= render partial: "shared/icon", locals: { icon_name: "logo-icon", class_names: "logo translate-y-4 translate-x-20" } %>
+    <%= render partial: "shared/icon", locals: { icon_name: "logo-text", class_names: "logo-text h-20 opacity-0" } %>
+  </div>
+  <div class="heading-group">
+    <h1 class="w-56 text-5xl font-bold font-headline">explore</h1>
+    <h1 class="w-56 text-5xl font-bold font-headline whitespace-nowrap">solo today</h1>
+    <h2 class="w-56 mt-2 mb-8 text-lg italic font-light text-center text-violet-dark-primary">The world is your oyster</h2>
+  </div>
   <%= link_to "Create Account", new_user_registration_path, class: "px-4 py-2 mb-10 font-bold text-black border-0 rounded bg-violet-primary hover:bg-violet-hover active:bg-violet-active" %>
   <p>Already a user?</p>
   <%= link_to "Log In", new_user_session_path, class: "px-4 py-2 mt-2 font-bold text-black border-0 rounded bg-periwinkle-primary hover:bg-periwinkle-hover active:bg-periwinkle-active" %>
